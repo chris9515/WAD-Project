@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Updating todolist
+        </title>
+    </head>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            Text: {{ edit.text }}
+            Completed: {{ edit.completed }}
+            <button type="submit">Update</button>
+        </form>
+    </body>
+</html>

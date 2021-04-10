@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+  <title> student_signup </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
+</head>
+<body>
+  <h2>Student Login</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+  
+    {{ form.as_p }}
+  
+    <input type="date" placeholder="year" name="year">
+    <input type="submit" value="Register">
+    <p>
+      <h5>
+      Have an account?  
+      </h5>
+      <a href="{% url 'studentLogin' %}">login</a> 
+    </p>
+  
+  
+    {% if form.errors or messages %}
+    <div class="error">
+      <div class="signal_logo">
+        <i class="fa fa-times-circle" aria-hidden="true" style="color: white; font-size: 23px;"></i>
+      </div>
+      <p>{{form.errors}}</p>
+      {% for message in messages %}
+      <span>{{ message }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

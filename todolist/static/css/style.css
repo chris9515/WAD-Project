@@ -1,0 +1,35 @@
+head{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: whitesmoke;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;    
+}
+ul{
+    list-style-type: square;
+    overflow: hidden;
+}
+li{
+    float:left;
+}
+li a{
+    display: block;
+    padding: 10px;
+    background-color: lightskyblue;
+    align-content: center;
+}
+h2 {
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+}
+
+
+
+
+
+

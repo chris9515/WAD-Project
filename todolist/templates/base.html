@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="nav-bar">
+            <ul>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'TTGenerator' %}">Timetable</a></li>
+                <li><a href="{% url 'todolist' %}">Dayplanner</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+              </ul>
+        </div> 
+   <div class="boxed">
+   <br></br>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

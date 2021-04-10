@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="Timetable Generator">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Timetable</title>
+    <link rel="stylesheet" href="{% static 'css/WAD_Project.css' %}">
+</head>
+<div class="Btn" onclick="document.getElementById('tableInp').style.display='block'">Click to Open form</div>    
+<div id="container"></div>
+<div class="ipform" id="tableInp">
+    <div class="closeDiv5">
+        <span class="close" onclick="closeSpan5()">&times;</span>
+    </div>
+    <div class="tableInp">
+        <p class="tablePara" ><h6>Timetable Parameters</h6></p>                    
+            <span class="genSpan">Starting Time:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" id="time" type="time" min="07:00" max="20:00"><br>
+            <span class="genSpan">Subject 1:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s1" placeholder="Enter subject name" /><br>
+            <span class="genSpan">Subject 2:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s2" placeholder="Enter subject name"><br>
+            <span class="genSpan">Subject 3:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s3" placeholder="Enter subject name"><br>
+            <span class="genSpan">Subject 4:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s4" placeholder="Enter subject name"><br>
+            <span class="genSpan">Subject 5:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s5" placeholder="Enter subject name"><br>
+            <span class="genSpan">Duration of each class:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" placeholder="Enter time" id="dur" type="time" max="04:00"><br>
+            <span class="genSpan">Total No. of Periods&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" placeholder="E.g 8" id="num" type="number"><br>
+            <div class=" breDiv">
+                <div class="bre">
+                    <span class="genSpan">First break</span><br><input class="breInput modalInput5" type="number" id="b1" min="1" max="7"><br>
+                    <span class="genSpan">duration</span><br><input class="breInput2 bInput modalInput5" placeholder="Enter time" type="time" id="b1dur" max="03:00">
+                </div>
+                <div class="bre">
+                    <span class="genSpan">Second break</span><br><input class="breInput modalInput5" type="number" id="b2" min="1" max="12"><br>
+                    <span class="genSpan">duration</span><br><input class="breInput2 bInput modalInput5" placeholder="Enter time" type="time" id="b2dur" max="03:00">
+                </div>  
+            </div>          
+            <br><br>
+            <span class="genBtn" type="submit"onclick="genTable()">Generate</span> 
+    </div> 
+</div>   
+<script>
+function openForm() 
+    {
+        document.getElementById("tableInp").style.display = "block";
+    }
+
+    function closeSpan5() {
+        document.getElementById("tableInp").style.display = "none";
+    }
+    ( document ).ready(function() {
+        ('dur').pickatime({
+        min: "7:00",
+        max: "20:00"
+        });
+    });
+    function addTime(s,d)
+    {
+        var startTime=s;
+        var endTime=d;
+        var times = [0, 0]
+        var times1 = (startTime || '').split(':')
+        var times2 = (endTime || '').split(':')
+        for (var i = 0; i < 2; i++) {
+            times1[i] = (isNaN(parseInt(times1[i]))) ? 0 : parseInt(times1[i])
+            times2[i] = (isNaN(parseInt(times2[i]))) ? 0 : parseInt(times2[i])
+            times[i] = times1[i] + times2[i];
+        }
+        var minutes = times[1];
+        var hours = times[0];
+        if (minutes >= 60) {
+            res = (minutes / 60) | 0;
+            hours += res;
+            minutes = minutes - (60 * res);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+        }
+        if(hours>=24)
+        {
+            hours=hours-24;
+        }
+        result = hours + ':' + minutes;
+        return result;
+    }
+    function genTable() 
+    {
+    var start=document.getElementById("time").value;
+    var time=[];
+    var sub=[];
+    sub[0]=document.getElementById("s1").value;
+    sub[1]=document.getElementById("s2").value;
+    sub[2]=document.getElementById("s3").value;
+    sub[3]=document.getElementById("s4").value;
+    sub[4]=document.getElementById("s5").value;
+    var dur=document.getElementById("dur").value;
+    var cells=[];
+    var b1=Number(document.getElementById("b1").value);
+    var b1dur=document.getElementById("b1dur").value;
+    var b2=Number(document.getElementById("b2").value);
+    var b2dur=document.getElementById("b2dur").value;
+    var num=Number(document.getElementById("num").value);
+    var n=6+6*num;
+    var k=0;
+    var br1=6*(b1+1);
+    var br2=6*(b2+1);
+    time[0]=start;
+    var perrow = 6, 
+        html = "<table><tr>" 
+    for (var i = 0; i < num; i++) 
+    {
+        if (b1==i){
+            time[i+1]=addTime(time[i],b1dur);
+            continue;
+        }
+        if (b2==i)
+        {
+            time[i+1]=addTime(time[i],b2dur);
+            continue;
+        }
+        time[i+1]=addTime(time[i],dur);
+    }
+    cells[0]="TIME";
+    cells[1]="MONDAY";
+    cells[2]="TUESDAY";
+    cells[3]="WEDNESDAY";
+    cells[4]="THURSDAY";
+    cells[5]="FRIDAY";
+    for (i = 6; i < n; i++)
+    {
+        cells[i]=sub[Math.floor(Math.random()*sub.length)];
+    }
+    for (var i = 6; i < n; i+=6) 
+    {
+        cells[i]=time[k]+" to "+time[k+1];
+        k++;
+    }
+    for (var j = 1; j < 6; j++)
+    {
+        cells[br1+j]="BREAK";
+        cells[br2+j]="BREAK";
+    } 
+    for (var i=0; i<n; i++) {
+      html += `<td>${cells[i]}</td>`;
+      var next = i+1;
+      if (next%perrow==0 && next!=cells.length) {
+        html += "</tr><tr>";
+      }
+    }
+    html += "</tr></table>";
+    document.getElementById("container").innerHTML = html;
+  }
+</script>
+{% endblock %}

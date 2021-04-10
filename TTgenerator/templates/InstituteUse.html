@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <title>
+        Institue Login
+    </title>
+    <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}"
+</head>
+<body>
+    <!-- <h1>Time Table Planner</h1> -->
+    <!-- <h1>Please select any one</h2>
+    <ul>
+        <li>
+            <a href="admin">Admin Login</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="{% url 'facultySignUp' %}">Faculty SignUp</a>
+            | <a href="{% url 'facultyLogin' %}">Faculty Login</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="{% url 'studentSignUp' %}">Student SignUp</a>
+            | <a href="{% url 'studentLogin' %}">Student Login</a>
+        </li>
+    </ul> -->
+    <div class="boxed">
+        <h2>PLEASE  SELECT  FROM  BELOW</h2>
+        </div>
+        <br></br>
+          <div class = "center">
+          <a href="admin"><img src=" https://ucdabenefits.com/wp-content/uploads/2013/04/admin.png" alt="Admin" width="450" height="208" class = "center"></img></a>
+          <br></br>
+                  <a href="{% url 'facultyLogin' %}">
+              <img src="https://www.snlpcp.ac.in/images/faculty-login.jpg" alt="ttg" width="450" height="208" class = "center"></img>
+          </a>
+          <br></br>
+              <a href = "{% url 'studentLogin' %}">
+              <img src ="https://bansal.ac.in/images/student_login.jpg" alt="dp" usemap="#0.2_media" width="450" height="208" class = "center"></img>
+          </a>
+          </div>
+</body>
+{% endblock %}

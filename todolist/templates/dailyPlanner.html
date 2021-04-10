@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <title>TODO List</title>
+    <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Wad_Project.css' %}">
+</head>
+<body>
+    <h1>ToDo list</h1>       
+    <form method="POST">
+        {% csrf_token %}
+        {{ text.text }}
+        <!-- {{ text.completed }} -->
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for x in list %}
+            <li>
+                {% if x.completed == True %}
+                    <s>{{ x.text }}</s>
+                {% else %}
+                 {{ x.text }}
+                {% endif %}  
+                | <a href="{% url 'update' x.id %}">Update</a> <a href="{% url 'delete' x.id %}">Delete</a>
+            </li>
+        {% endfor %}
+        <li>
+            <a href="{% url 'deleteAll' %}">Delete All</a>
+        </li>
+    </ul>
+</body>
+{% endblock %}

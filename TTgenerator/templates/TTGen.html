@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <title>
+        Time Table Generator
+    </title>
+    <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
+</head>
+<body>
+    <h1>Time Table Planner</h1>
+        <a href="{% url 'logout' %}">Log out</a>
+    <h2>Please select any one</h2>
+    <div class="center">
+        <ul>
+            <li>
+                <a href="{% url 'PersonnalUse' %}">
+                    <img src="https://raw.githubusercontent.com/deevensaam/Photos/main/Presonal%20use.jpeg" alt="" width="450" height="208" class = "center"></img>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="{% url 'InstituteUse' %}">
+                    <img src ="https://raw.githubusercontent.com/deevensaam/Photos/main/inst-use.jpeg" alt="" width="450" height="208" class = "center"></img>
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% if user.is_staff %}
+        <a href="{% url 'teacherProfile' %}">View Profile</a>
+    {% elif not user.is_staff %}
+        <a href="{% url 'studentProfile' %}">View Profile</a>
+    {% endif %}
+</body>
+{% endblock %}
