@@ -8,3 +8,6 @@ class TodoForm(forms.ModelForm):
     class Meta:
         model = ToDoList
         fields = ('text','completed')
+        widgets = {
+            'text': forms.TextInput(attrs={'class': 'input_text', 'placeholder': 'add an item'})
+        }
