@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import TimeTableGenerator, InstituteUse, StudentRegister, FacultyRegister, StudentLogin, FacultyLogin, studentProfileView, teacherProfileView, logoutView, PersonnalUse
+from . import views
 
 urlpatterns = [
     path('TTGenerator', TimeTableGenerator, name = 'TTGenerator'),
@@ -12,4 +13,5 @@ urlpatterns = [
     path('teacherProfile', teacherProfileView, name="teacherProfile"),
     path('studentProfile', studentProfileView, name="studentProfile"),
     path('logout', logoutView, name="logout"),
+    path('createschedule', views.create_schedule, name="create_schedule"),
 ]

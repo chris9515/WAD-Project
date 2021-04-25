@@ -3,7 +3,7 @@ from .models import Teacher, Student
 from .forms import CustomUserCreationForm, StudentForm, CustomAuthenticateForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .utilities import processFacultyRegistrarionForm
+from .utilities import processFacultyRegistrarionForm, schedulingalgo
 from django.contrib import messages
 from django.contrib.auth.models import User
 
@@ -91,3 +91,21 @@ def studentProfileView(request):
 def logoutView(request):
     logout(request)
     return redirect('InstituteUse')
+
+
+def create_schedule(request):
+    if request.method == 'POST':
+        data  = request.POST
+        print(data)
+        subjects = request.POST.getlist('subject')
+        periods = request.POST.getlist('periods')
+        start_time = request.POST.get('startTime')
+        end_time = request.POST.get('endTime')
+        break_time = request.POST.get('breakTime')
+        duration = request.POST.get('breakDuration')
+        subject_data = dict()
+        for i, j in subjects, periods:
+            subject_data[i] = j
+        output = schedulingalgo(startTime=start_time, endTime=end_time, breakTime=break_time, breakDuration=duration, subjectData=subject_data)
+        return render(request, 'TimetableResponse.html', {'output' : output,})
+    return render(request, 'CreateSchedule.html')

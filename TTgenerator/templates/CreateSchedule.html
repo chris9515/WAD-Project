@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+    body .wrapper{
+        margin: auto;
+        padding: 20px;
+    }
+    header{
+        min-height: 8vh;
+        background-color: orange;
+    }
+</style>
+<body>
+    <header></header>
+    <div class="wrapper">
+        <form method="POST" >
+            {% csrf_token %}
+            <label for="startTime">Enter Start Time</label>
+            <input name="startTime" type="time" class="form-control" >
+            <label for="endTime">Enter End Time</label>
+            <input type="time" name="endTime" class="form-control">
+            <label for="breakTime">Enter Break Time</label>
+            <input type="time" name="breakTime" class="form-control">
+            <label for="breakDuration">Break Duration</label>
+            <input type="number" placeholder="Break Duration" name="breakDuration" class="form-control">
+            <h3>Subjects To be scheduled</h3>
+            <div>
+                <div class="subjects">
+                    <div class="subject form-row">
+                        <input name="subject" type="text" placeholder="Subject Name" class="mb-3 col form-control">
+                        <input name="periods" type="text" placeholder="Number of periods per week" class="mb-3  col form-control">
+                        <button type="button" class="removeBtn mb-3 col btn btn-danger"><i class="far fa-window-close"></i></button>
+                    </div>
+                </div>
+                <button id="addSubjectBtn" type="button" class="mb-5 btn btn-warning">Add Subject</button>
+            </div>
+            <button type="submit" class="mb-5 btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script>
+        const subjects = document.querySelector('.subjects');
+        const addSubjectBtn = document.querySelector("#addSubjectBtn");
+        const removeBtns = document.querySelectorAll('.removeBtn');
+
+        addSubjectBtn.addEventListener('click', function (event) {
+            const subjectName = document.createElement('input');
+            const days = document.createElement('input');
+            subjectName.type = "text";
+            days.type = "text";
+            subjectName.placeholder = "Subject Name";
+            days.placeholder = "Number of periods per week";
+            const removeBtn = document.createElement('button');
+            removeBtn.type = "button";
+            removeBtn.className = "removeBtn";
+            removeBtn.innerHTML = '<i class="far fa-window-close"></i>';
+            removeBtn.classList.add('mb-3');
+            removeBtn.classList.add('col');
+            removeBtn.classList.add('form-control');
+            removeBtn.classList.add('btn');
+            removeBtn.classList.add('btn-danger');
+
+            subjectName.classList.add('mb-3');
+            subjectName.classList.add('col');
+            subjectName.classList.add('form-control');
+            subjectName.setAttribute('name', 'subject');
+
+            days.classList.add('mb-3');
+            days.classList.add('col');
+            days.classList.add('form-control');
+            days.setAttribute('name', 'periods');
+
+            removeBtn.addEventListener('click', (e) => {
+                removeBtn.parentElement.remove();
+            })
+
+            const subject = document.createElement('div');
+            subject.className = "subject";
+            subject.classList.add('form-row');
+            subject.appendChild(subjectName);
+            subject.appendChild(days);
+            subject.appendChild(removeBtn);
+            subjects.appendChild(subject);
+        });
+
+        removeBtns.forEach((btn, index) => {
+            btn.addEventListener('click', function (event) {
+                console.log("Hello");
+                btn.parentElement.remove();
+            });
+        });
+    </script>
+</body>
+
+</html>
