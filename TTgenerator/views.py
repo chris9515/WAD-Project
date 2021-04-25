@@ -9,8 +9,8 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def TimeTableGenerator(request):
-    context = {"user":request.user}
-    return render(request, "TTGen.html", context)
+    # context = {"user":request.user}
+    return render(request, "TTGen.html",)
 
 def InstituteUse(request):
     return render(request, 'InstituteUse.html')
@@ -56,7 +56,7 @@ def FacultyLogin(request):
         print(user)
         if user is not None and user.is_staff==True:
             login(request, user)
-            return redirect('TTGenerator')
+            return redirect('ttplanner')
         else:
             messages.info(request, "Username or Password is incorrect!!")
             return render(request, 'FacultyLogin.html', {'form': form, 'type':'faculty'})
@@ -72,7 +72,7 @@ def StudentLogin(request):
         print(user)
         if user is not None and user.is_staff==False:
             login(request, user)
-            return redirect('TTGenerator')
+            return redirect('ttplanner')
         else:
             messages.info(request, "Username or Password is incorrect!!")
             return render(request, 'StudentLogin.html', {'form': form, 'type':'student'})
@@ -109,3 +109,16 @@ def create_schedule(request):
         output = schedulingalgo(startTime=start_time, endTime=end_time, breakTime=break_time, breakDuration=duration, subjectData=subject_data)
         return render(request, 'TimetableResponse.html', {'output' : output,})
     return render(request, 'CreateSchedule.html')
+
+def TimeTablePlannerView(request):
+    context = {"user":request.user}
+    weeks = request.POST.get('weeks')
+    start = request.POST.get('start')
+    end = request.POST.get('end')
+    break1 = request.POST.get('break1')
+    time = request.POST.get('time')
+    subjects = {}
+    listSubjects = request.POST.get('subjects')
+    return render(request, 'TimeTablePlanner.html', context)
+
+# def tt(weeks,start,end,break1,time,subjects)
