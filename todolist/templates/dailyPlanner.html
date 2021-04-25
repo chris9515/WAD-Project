@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <title>TODO List</title>
     <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
@@ -13,26 +13,38 @@
 </head>
 <body>
     <h1>ToDo list</h1>       
-    <form method="POST">
-        {% csrf_token %}
-        {{ text.text }}
-        <!-- {{ text.completed }} -->
-        <button type="submit">Add</button>
-    </form>
-    <ul>
-        {% for x in list %}
-            <li>
-                {% if x.completed == True %}
-                    <s>{{ x.text }}</s>
-                {% else %}
-                 {{ x.text }}
-                {% endif %}  
-                | <a href="{% url 'update' x.id %}">Update</a> <a href="{% url 'delete' x.id %}">Delete</a>
-            </li>
-        {% endfor %}
-        <li>
-            <a href="{% url 'deleteAll' %}">Delete All</a>
-        </li>
-    </ul>
+    <div class="todolist_main">
+        <form method="POST" class="header">s
+            {% csrf_token %}
+            <div class="input_div">
+                {{ text.text }}
+            </div>
+            <div class="button_div">
+                <button type="submit" class="add_button">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+        <div class="todo_body">
+            {% for x in list %}
+                <div class="itemlist">
+                    <div class="content">
+                        {% if x.completed == True %}
+                            <s>{{x.text}}</s>
+                        {% else %}
+                            {{x.text}}
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'update' x.id %}" class="update">Update</a>
+                    <a href="{% url 'delete' x.id %}" class="delete">Delete</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="footer">
+            <a href="{% url 'deleteAll' %}" class="deleteall_div">
+                <i class="fa fa-trash" aria-hidden="true">Delete all</i>
+            </a>
+        </div>
+    </div>
 </body>
 {% endblock %}

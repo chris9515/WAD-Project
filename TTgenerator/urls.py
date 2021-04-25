@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TimeTableGenerator, InstituteUse, StudentRegister, FacultyRegister, StudentLogin, FacultyLogin, studentProfileView, teacherProfileView, logoutView, PersonnalUse
+from .views import TimeTableGenerator, InstituteUse, StudentRegister, FacultyRegister, StudentLogin, FacultyLogin, studentProfileView, teacherProfileView, logoutView, PersonnalUse, TimeTablePlannerView
 
 urlpatterns = [
     path('TTGenerator', TimeTableGenerator, name = 'TTGenerator'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('teacherProfile', teacherProfileView, name="teacherProfile"),
     path('studentProfile', studentProfileView, name="studentProfile"),
     path('logout', logoutView, name="logout"),
+    path('ttplanner', TimeTablePlannerView, name='ttplanner'),
 ]
