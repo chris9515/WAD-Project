@@ -61,6 +61,144 @@
   padding: 5px;
   text-align: center;
 }
+/* start */
+
+.todolist_main{
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.todolist_main .header{
+  width: 85%;
+  height: 40px;  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px; 
+}
+
+.header .input_div{
+  width: 85%;
+  height: 100%;
+}
+
+.header .button_div{
+  height: 100%;
+  width: 10%;
+  padding: 5px;
+}
+
+.header .input_text{
+  height: 100%;
+  width: 100%;
+  border-radius: 2.5px;
+  outline: none;
+  padding: 0px 10px;
+}
+
+.header .add_button{
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  padding: 5px;
+}
+
+.header .add_button:focus{
+  outline: none;
+}
+
+.header .add_button:hover{
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  background-color: gray;
+  transition: 0.3s all ease-in-out;
+}
+
+.todolist_main .todo_body{
+  margin: 20px 0px;
+  width: 75%;
+  height: 300px;
+  background-color: white;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.todo_body .itemlist{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  height: 40px;
+}
+
+.itemlist .content{
+  width: 70%;
+  height: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 0px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2.5%;
+}
+
+.itemlist .update, .itemlist .delete{
+  margin: 0px 2.5%;
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemlist .update, .itemlist .delete{
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.itemlist .update{
+  background-color: green;
+}
+
+.itemlist .delete{
+  background-color: red;
+}
+
+.todolist_main .footer{
+  width: 75%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.deleteall_div{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  text-decoration: none;
+}
 
 /* end */
 
@@ -371,9 +509,9 @@ h1{
           color: rgb(97, 104, 32);
         }
         
-        *, *:before, *:after {
+        /* *, *:before, *:after {
           box-sizing: inherit;
-        }
+        } */
         
         .column {
           float: left;
