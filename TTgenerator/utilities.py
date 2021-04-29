@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import Teacher,Student
+from .models import Teacher, Student
 
 
 def processFacultyRegistrarionForm(form):
@@ -16,8 +16,19 @@ def processFacultyRegistrarionForm(form):
         username=username.strip(),
         email=email.strip(),
         password=password1.strip(),
-        is_staff = True
+        is_staff=True
     )
-    teacher = Teacher.objects.create(user=user,subject=subject)
+    teacher = Teacher.objects.create(user=user, subject=subject)
     return teacher
 
+
+def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData):
+    A = {
+    'Monday': {'CCN': '9:00', 'WAD': '12:00', 'AI': '14:00', 'ML': '16:00'}, 
+    'Friday': {'AI': '8:00', 'ML': '9:00', 'TOC': '11:00', 'CCN': '16:00', 'WAD': '17:00'}, 
+    'Thursday': {'CCN': '14:00', 'TOC': '15:00','WAD': '16:00'}, 
+    'Saturday': {'ML': '9:00', 'TOC': '10:00', 'AI': '13:00', 'WAD': '15:00'}, 
+    'Tuesday': {'AI': '10:00', 'CCN': '11:00', 'WAD': '15:00'}, 
+    'Wednesday': {'CCN': '8:00', 'TOC': '13:00'}
+    }
+    return A
