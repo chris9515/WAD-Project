@@ -106,10 +106,12 @@
 
 .header .add_button{
   height: 100%;
-  width: 100%;
+  width: 50%;
   cursor: pointer;
   outline: none;
   padding: 5px;
+  margin-bottom: 50px;
+  border-radius: 10%;
 }
 
 .header .add_button:focus{
@@ -118,9 +120,10 @@
 
 .header .add_button:hover{
   height: 100%;
-  width: 100%;
+  width: 50%;
   padding: 5px;
-  background-color: gray;
+  background-color:white;
+  color:black;
   transition: 0.3s all ease-in-out;
 }
 
@@ -161,7 +164,7 @@
 }
 
 .itemlist .update, .itemlist .delete{
-  margin: 0px 2.5%;
+  margin: 0px 0.2%;
   width: 10%;
   height: 100%;
   display: flex;
@@ -177,12 +180,27 @@
 
 .itemlist .update{
   background-color: green;
+  border-radius: 5%;
+  color:white;
 }
 
 .itemlist .delete{
-  background-color: red;
+  background-color:#8A0707;
+  border-radius: 5%;
+  color:white;
 }
-
+.add_button{
+  background-color:black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 .todolist_main .footer{
   width: 75%;
   height: 40px;
@@ -198,6 +216,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 5%;
   background-color: white;
   text-decoration: none;
 }
@@ -206,7 +225,7 @@
 
 .nav-bar
 {
-background:#116466;
+background:black;
 overflow: hidden;
 width: 100%;
 top: 0; 
@@ -230,12 +249,14 @@ position: fixed;
 }
 .nav-bar a:hover 
 {
-background-color: #267e80;
+background-color: silver;
+color:white;
+transition: 1s;
 }
 body{
 padding-top: 20px;
 overflow: auto;
-background-color: #2c3531;
+background-color: #423F40;
 margin-left: 0%;
 margin-right: 0%;
 font-family:'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -447,7 +468,6 @@ h1{
       .add:hover{
         opacity: 0.7;
         }
-        
         .container{
         display: flex;
         flex-direction: column;
@@ -456,22 +476,19 @@ h1{
         text-align: center;
         margin-top: 2rem;
         }
-        
         .item{
         padding: 0.5rem;
         border-bottom: 4px solid #fff;
         margin-bottom: 1.5rem;
         }
-        
         .item_input{
         background: none;
         outline: none;
         border: none;
         color: #fff;
-        font-size: 1.4rem; 
+        font-size: 1.4rem;
         width: 245px;
         }
-        
         .editButton{
         background: none;
         outline: none;
@@ -482,7 +499,6 @@ h1{
         margin: 0 0.75rem;
           cursor: pointer;
         }
-        
         .removeButton{
         background: none;
         outline: none;
@@ -493,8 +509,6 @@ h1{
         margin: 0 0.75rem;
           cursor: pointer;
         }
-
-        
         h3{
             font-style: italic;
             font-size: 20px;
@@ -510,15 +524,13 @@ h1{
           font-size: 20px;
           color: rgb(97, 104, 32);
         }
-        
         /* *, *:before, *:after {
           box-sizing: inherit;
         } */
-        
         .column {
           float: left;
           width: 20%;
-        }        
+        }
         .card {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           margin: 5px;
@@ -538,13 +550,11 @@ h1{
         .container {
           padding: 20px 15px;
         }
-        
         .container::after, .row::after {
           content: "";
           clear: both;
           display: table;
         }
-        
         .button {
           border: none;
           outline: 0;
@@ -562,9 +572,9 @@ h1{
         }
         
         .button:hover {
-          background-color: #555;
+          background-color:white;
+          color:black;
         }
-        
         .center {
           display: block;
           margin-left: auto;

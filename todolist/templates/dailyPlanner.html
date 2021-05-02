@@ -10,18 +10,20 @@
     <title>TODO List</title>
     <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Wad_Project.css' %}">
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>ToDo list</h1>       
+    <h1 style="color:white;font-family: 'Orelega One', cursive;"><b>To-Do List</b></h1>       
     <div class="todolist_main">
         <form method="POST" class="header">
             {% csrf_token %}
-            <div class="input_div">
+            <div class="input_div" style="margin-left: 5.7%;">
                 {{ text.text }}
             </div>
             <div class="button_div">
                 <button type="submit" class="add_button">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
+                   <b><i class="fa fa-plus" aria-hidden="true" style="font-size: 20px;"></i></b>
                 </button>
             </div>
         </form>
@@ -35,14 +37,14 @@
                             {{x.text}}
                         {% endif %}
                     </div>
-                    <a href="{% url 'update' x.id %}" class="update">Update</a>
-                    <a href="{% url 'delete' x.id %}" class="delete">Delete</a>
+                    <a href="{% url 'update' x.id %}" class="update"><b>Update</b></a>
+                    <a href="{% url 'delete' x.id %}" class="delete"><b>Delete</b></a>
                 </div>
             {% endfor %}
         </div>
-        <div class="footer">
-            <a href="{% url 'deleteAll' %}" class="deleteall_div">
-                <i class="fa fa-trash" aria-hidden="true">Delete all</i>
+        <div class="footer" style="border-radius: 10%;">
+            <a href="{% url 'deleteAll' %}" class="deleteall_div" style="text-decoration: none;">
+                <b><i class="fa fa-trash" aria-hidden="true" style="color:black;">Delete All</i></b>
             </a>
         </div>
     </div>

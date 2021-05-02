@@ -4,6 +4,11 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/WAD_Project.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
     </head>
     <!-- <h1>Choose any one</h1>
     <h2>
@@ -11,17 +16,21 @@
     </h2>
     <h2>
         <a href="TTGenerator">Time Table Generator</a>
-    </h2> -->
-<h2>PLEASE  SELECT  FROM  BELOW</h2>
+    </h2> --><br>
+<h2 style="color:white;font-family: 'Orelega One', cursive;"><b>PLEASE  SELECT  FROM  BELOW</b></h2>
 </div>
 <br>
-<div class = "center">
-        <a href = "{% url 'TTGenerator' %}">
+<div class = "center" style="margin-top: 10%;">
+    <table class="table table-bordered">
+    <thead >
+    <tr>
+        <th>    <a href = "{% url 'TTGenerator' %}">
     <img src="https://raw.githubusercontent.com/deevensaam/Photos/main/Lucky%20desin%202.png" alt="ttg" width="450" height="208" class = "center" />
-</a>
-<br>
-    <a href = "{% url 'todolist' %}">
+</a></th>
+        <th><a href = "{% url 'todolist' %}">
     <img src ="https://raw.githubusercontent.com/deevensaam/Photos/main/Lucky%20design%203.png" alt="dp" width="450" height="208" class = "center" />
-</a>
+</a></th>
+    </tr>
+    </thead>
 </div>
 {% endblock %}
