@@ -3,7 +3,7 @@ from .models import Teacher, Student
 from .forms import CustomUserCreationForm, StudentForm, CustomAuthenticateForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .utilities import processFacultyRegistrarionForm, TimeTableGenerator, schedulingalgo
+from .utilities import processFacultyRegistrarionForm, schedulingalgo
 from django.contrib import messages
 from django.contrib.auth.models import User
 import json
@@ -108,14 +108,6 @@ def create_schedule(request):
         for i in range(len(subjects)):
             subject_data[subjects[i]] = periods[i]
         print(subject_data)
-        input={
-            'start':start_time,
-            'end':end_time,
-            'break1':break_time,
-            'time':duration,
-            'Subjects':subject_data
-        }
-        # output = TimeTableGenerator(input)
         output = schedulingalgo(start_time,end_time,break_time,duration,subject_data)
         return render(request, 'TimetableResponse.html', {'output' : output,})
     return render(request, 'CreateSchedule.html')
