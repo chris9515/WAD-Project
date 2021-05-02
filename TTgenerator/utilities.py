@@ -30,11 +30,10 @@ def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData):
     break1 = breakTime
     time = "1:00"
     Subjects = subjectData
-
+    lunch_start = '12:00'
+    lunch_end = '13:00'
 
     print(start, end, break1, time)
-
-
     week=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     weeks = list(week)
     Period = {}
@@ -63,13 +62,18 @@ def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData):
     ho,mo = str(end).split(":")
     h,m = str(break1).split(":")
     hb,mb = str(time).split(":")
-
+    hls,mls = lunch_start.split(":")
+    hle,mle = lunch_end.split(":")
+    lunch_s = int(hls+mls)
+    lunch_e = int(hle+mle)
     begin = int(hi+mi)
     stop = int(ho+mo)
     interval = int(h+m)
     break2 = int(hb+mb)
 
-    list3 = [*range(begin,stop+1,interval+break2)]
+    list6 = [*range(begin,lunch_s+1,interval+break2)]
+    list7 = [*range(lunch_e,stop+1,interval+break2)]
+    list3 = list6+list7
 
 
     TimeTable={}
@@ -78,11 +82,11 @@ def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData):
     for i in Table.keys():
         Schedule={}
         list4 = list3.copy()
-        if len(list3) < len(Table[i]):
+        if len(list3)-1 < len(Table[i]):
             status=1
             break
         for j in Table[i]:
-            rand = random.randint(0,len(list4)-1)
+            rand = random.randint(0,len(list4)-2)
             if len(str(list4[rand]%100)) < 2 :
                 Schedule[j]= str(int(list4[rand]/100)) +":"+str(list4[rand]%100)+str(0)
             else :  
@@ -90,12 +94,18 @@ def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData):
             list4.remove(list4[rand])
 
             TimeTable[i] = dict(sorted(Schedule.items(), key = lambda x : int(x[1].split(":")[0] + x[1].split(":")[1]) ))
-
+    list5=[]
+    for rand in range(0,len(list3)):
+        if len(str(list3[rand]%100)) < 2 :
+            Schedule = str(int(list3[rand]/100)) +":"+str(list3[rand]%100)+str(0)
+        else :  
+            Schedule = str(int(list3[rand]/100)) +":"+ str(list3[rand]%100)
+        list5.append(Schedule)
     if status==1:
-        return {}
+        return {},list5
 
     else:
-        return TimeTable,list3 
+        return TimeTable,list5
 
 # def TimeTableGenerator(input,*args,**kwargs):
 #     week=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]

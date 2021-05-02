@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
 </head>
 <body>
-    <h1>{{profile.user.username}}</h1>
-    <h2>{{ profile.subject }}</h2>
+    <h1>User Name: {{profile.user.username}}</h1>
+    <h2>Subject: {{ profile.subject }}</h2>
+    <h2>Email: {{ profile.email }}</h2>
 </body>
 {% endblock %}

@@ -98,6 +98,7 @@ def create_schedule(request):
     if request.method == 'POST':    
         data  = request.POST
         print(data)
+        week=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
         subjects = request.POST.getlist('subject')
         periods = request.POST.getlist('periods')
         start_time = request.POST.get('startTime')
@@ -105,11 +106,44 @@ def create_schedule(request):
         break_time = request.POST.get('breakTime')
         duration = request.POST.get('breakDuration')
         subject_data = dict()
-        for i in range(len(subjects)):
+        for i in range(len(subjects)):  
             subject_data[subjects[i]] = periods[i]
         print(subject_data)
-        output = schedulingalgo(start_time,end_time,break_time,duration,subject_data)
-        return render(request, 'TimetableResponse.html', {'output' : output,})
+        output,times = schedulingalgo(start_time,end_time,break_time,duration,subject_data)
+        list2 = []
+        for i in range(len(times)-1):
+            hi,mi =times[i].split(":")
+            ho,mo = "1:00".split(":")
+            hi = int(hi) 
+            ho=int(ho)
+            mi=int(mi) 
+            mo=int(mo)
+            h = hi+ho   
+            m = mi+mo
+            if m>60:
+                h+=1
+                m=m%60
+            if len(str(m))<2 : 
+                time1 = str(h)+":"+str(m)+'0'
+            else:
+                time1 = str(h)+":"+str(m)
+            time = times[i] + '-'+ time1
+            list2.append(time)
+        for i in output.keys():
+            output[i] =dict([(value, key) for key, value in output[i].items()])
+        # print(output)
+        times.pop()
+        for i in output.keys():
+            for j in times:
+                if j in output[i].keys():
+                    continue
+                else:
+                    output[i][j] = ' None'
+            output[i]['12:00']='LUNCH'        
+        for i in output.keys():
+            output[i] = dict(sorted(output[i].items(), key = lambda x : int(x[0].split(":")[0] + x[0].split(":")[1]) ))
+        dict(sorted(output.items()))
+        return render(request, 'TimetableResponse.html', {'output' : output,'times':times,'list2':list2, 'week':week})
     return render(request, 'CreateSchedule.html')
 
 def TimeTablePlannerView(request):

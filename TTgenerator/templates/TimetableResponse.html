@@ -7,6 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    {{output}}
+    
+    {% for i,j in output.items %}
+        {{i}}
+        <br>
+        {% for a,b in j.items %}
+            {% for z in list2 %}
+                {% if forloop.counter == forloop.parentloop.counter %}
+                    {{z}}-{{b}}
+                    <br>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        <br><br>
+    {% endfor %}
 </body>
 </html>
