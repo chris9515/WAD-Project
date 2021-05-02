@@ -4,6 +4,7 @@
 <head>
     <title>Time Table Planner</title>
     <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/SASS/TimeTablePlanner.css' %}">
 </head>
 {% csrf_token %}
 <a href="{% url 'logout' %}">Log out</a>
@@ -12,7 +13,7 @@
 {% elif not user.is_staff %}
     <a href="{% url 'studentProfile' %}">View Profile</a>
 {% endif %}
-<form method="POST">
-    <input id="weeks">
-</form>
+<a href="{% url 'create_schedule' %}">Scheduele</a>
+
+  
 {% endblock %}

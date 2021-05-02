@@ -3,9 +3,10 @@ from .models import Teacher, Student
 from .forms import CustomUserCreationForm, StudentForm, CustomAuthenticateForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .utilities import processFacultyRegistrarionForm, schedulingalgo
+from .utilities import processFacultyRegistrarionForm, TimeTableGenerator, schedulingalgo
 from django.contrib import messages
 from django.contrib.auth.models import User
+import json
 
 # Create your views here.
 def TimeTableGenerator(request):
@@ -94,7 +95,7 @@ def logoutView(request):
 
 
 def create_schedule(request):
-    if request.method == 'POST':
+    if request.method == 'POST':    
         data  = request.POST
         print(data)
         subjects = request.POST.getlist('subject')
@@ -104,21 +105,40 @@ def create_schedule(request):
         break_time = request.POST.get('breakTime')
         duration = request.POST.get('breakDuration')
         subject_data = dict()
-        for i, j in subjects, periods:
-            subject_data[i] = j
-        output = schedulingalgo(startTime=start_time, endTime=end_time, breakTime=break_time, breakDuration=duration, subjectData=subject_data)
+        for i in range(len(subjects)):
+            subject_data[subjects[i]] = periods[i]
+        print(subject_data)
+        input={
+            'start':start_time,
+            'end':end_time,
+            'break1':break_time,
+            'time':duration,
+            'Subjects':subject_data
+        }
+        # output = TimeTableGenerator(input)
+        output = schedulingalgo(start_time,end_time,break_time,duration,subject_data)
         return render(request, 'TimetableResponse.html', {'output' : output,})
     return render(request, 'CreateSchedule.html')
 
 def TimeTablePlannerView(request):
     context = {"user":request.user}
-    weeks = request.POST.get('weeks')
-    start = request.POST.get('start')
-    end = request.POST.get('end')
-    break1 = request.POST.get('break1')
-    time = request.POST.get('time')
-    subjects = {}
-    listSubjects = request.POST.get('subjects')
+
+    # if request.method == 'POST':
+    #   weeks = request.POST.get('weeks')
+    #   week = weeks.strip('][').split(',')
+    #   start = request.POST.get('start')
+    #   end = request.POST.get('end')
+    #   break1 = request.POST.get('break1')
+    #   time = request.POST.get('time')
+    #   Subjects = request.POST.get('subjects') # '{'Table':Table}'
+    #   Subjects = json.loads(Subjects)   # {}
+    #   Table,Intervals = TimeTableGenerator(week,start,end,break1,time,Subjects)
+      
+
+    #   context['Table'] = Table # context+={"Table":Table}
+    #   context['Interval'] = Intervals
+    #   context['break1'] = break1
+      
     return render(request, 'TimeTablePlanner.html', context)
 
 # def tt(weeks,start,end,break1,time,subjects)
