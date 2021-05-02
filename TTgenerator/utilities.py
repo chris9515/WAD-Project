@@ -23,6 +23,12 @@ def processFacultyRegistrarionForm(form):
 
 
 def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData):
+    # Process
+    # Process
+    # Process
+    # Process
+    # Process
+    # Process
     A = {
     'Monday': {'CCN': '9:00', 'WAD': '12:00', 'AI': '14:00', 'ML': '16:00'}, 
     'Friday': {'AI': '8:00', 'ML': '9:00', 'TOC': '11:00', 'CCN': '16:00', 'WAD': '17:00'}, 
