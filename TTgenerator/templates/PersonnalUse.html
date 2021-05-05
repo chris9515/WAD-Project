@@ -7,35 +7,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Timetable</title>
     <link rel="stylesheet" href="{% static 'css/WAD_Project.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<div class="Btn" onclick="document.getElementById('tableInp').style.display='block'">Click to Open form</div>    
+<div class="Btn" onclick="document.getElementById('tableInp').style.display='block'" style="background-color:white;color:black;margin-left:40% ;"><b>Click to Open form</b></div>    
 <div id="container"></div>
-<div class="ipform" id="tableInp">
+<div class="ipform" id="tableInp" style="width: 70%;background-color:black;">
     <div class="closeDiv5">
-        <span class="close" onclick="closeSpan5()">&times;</span>
+        <span class="close" onclick="closeSpan5()"><h6 style="color:white;">&times;</h6></span>
     </div>
     <div class="tableInp">
-        <p class="tablePara" ><h6>Timetable Parameters</h6></p>                    
-            <span class="genSpan">Starting Time:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" id="time" type="time" min="07:00" max="20:00"><br>
-            <span class="genSpan">Subject 1:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s1" placeholder="Enter subject name" /><br>
-            <span class="genSpan">Subject 2:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s2" placeholder="Enter subject name"><br>
-            <span class="genSpan">Subject 3:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s3" placeholder="Enter subject name"><br>
-            <span class="genSpan">Subject 4:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s4" placeholder="Enter subject name"><br>
-            <span class="genSpan">Subject 5:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s5" placeholder="Enter subject name"><br>
-            <span class="genSpan">Duration of each class:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" placeholder="Enter time" id="dur" type="time" max="04:00"><br>
-            <span class="genSpan">Total No. of Periods&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" placeholder="E.g 8" id="num" type="number"><br>
-            <div class=" breDiv">
-                <div class="bre">
-                    <span class="genSpan">First break</span><br><input class="breInput modalInput5" type="number" id="b1" min="1" max="7"><br>
-                    <span class="genSpan">duration</span><br><input class="breInput2 bInput modalInput5" placeholder="Enter time" type="time" id="b1dur" max="03:00">
-                </div>
-                <div class="bre">
-                    <span class="genSpan">Second break</span><br><input class="breInput modalInput5" type="number" id="b2" min="1" max="12"><br>
-                    <span class="genSpan">duration</span><br><input class="breInput2 bInput modalInput5" placeholder="Enter time" type="time" id="b2dur" max="03:00">
-                </div>  
-            </div>          
-            <br><br>
-            <span class="genBtn" type="submit"onclick="genTable()">Generate</span> 
+        <p class="tablePara" ><h6 style="color:white;font-family: 'Orelega One', cursive;font-size: 50px;"><b>Timetable Parameters</b></h6></p>
+        <div style="margin-right: 4%;">
+             <table class="table table-dark table-bordered">
+    <thead>
+      <tr>
+        <th> <span class="genSpan" style="color:white;font-weight: bold;">Starting Time:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" id="time" type="time" min="07:00" max="20:00"></th>
+        <th><span class="genSpan" style="color:white;font-weight: bold;">Subject 1:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s1" placeholder="Enter subject name" /></th>
+
+      </tr>
+        <tr>
+        <th><span class="genSpan" style="color:black;font-weight: bold;">Subject 2:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s2" placeholder="Enter subject name"></th>
+        <th><span class="genSpan" style="color:black;font-weight: bold;">Subject 3:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s3" placeholder="Enter subject name"></th>
+
+      </tr>
+        <tr>
+        <th> <span class="genSpan" style="color:black;font-weight: bold;">Subject 4:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s4" placeholder="Enter subject name"></th>
+        <th><span class="genSpan" style="color:black;font-weight: bold;">Subject 5:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" type="text" id="s5" placeholder="Enter subject name"></th>
+
+      </tr>
+      <tr>
+          <th><span class="genSpan" style="color:black;font-weight: bold;">Duration of each class:&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" placeholder="Enter time" id="dur" type="time" max="04:00"></th>
+          <th> <span class="genSpan" style="color:black;font-weight: bold;">Total No. of Periods&nbsp;<sup class="red">*</sup></span><br><input class="genInput modalInput5" placeholder="E.g 8" id="num" type="number"></th>
+      </tr>
+      <tr>
+          <th>
+            <span class="genSpan" style="color:black;font-weight: bold;">First break</span><br><input class="breInput modalInput5" type="number" id="b1" min="1" max="7">
+          </th>
+          <th>
+             <span class="genSpan" style="color:black;font-weight: bold;">duration</span><br><input class="breInput2 bInput modalInput5" placeholder="Enter time" type="time" id="b1dur" max="03:00">
+          </th>
+      </tr>
+      <tr>
+          <th>
+            <span class="genSpan" style="color:black;font-weight: bold;">Second break</span><br><input class="breInput modalInput5" type="number" id="b2" min="1" max="12">
+          </th>
+          <th>
+              <span class="genSpan" style="color:black;font-weight: bold;">duration</span><br><input class="breInput2 bInput modalInput5" placeholder="Enter time" type="time" id="b2dur" max="03:00">
+
+          </th>
+      </tr>
+      
+    
+      
+    </thead></table><span class="genBtn" type="submit"onclick="genTable()" style="color:black;font-weight: bold;background-color: white;margin-left: 3%;"><b>Generate</b></span>
+        </div>
+       
     </div> 
 </div>   
 <script>

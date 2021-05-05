@@ -6,27 +6,42 @@
         Time Table Generator
     </title>
     <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Time Table Planner</h1>
-    <h2>Check updates</h2>
-    <h2>Please select any one</h2>
-    <div class="center">
-        <ul>
-            <li>
-                <a href="{% url 'PersonnalUse' %}">
+    <h1 style="color:white;font-family: 'Orelega One', cursive;font-size: 80px;"><b>Time Table Planner</b></h1>
+    <h2 id="tim" style="color:bisque;"><b>Check Updates</b></h2><br>
+    <h2 style="font-size: 50px;color:white;font-family: 'Orelega One', cursive;"><b>Please select any one</b></h2>
+    <div class="center" style="margin-top: 3%;">
+        <table class="table table-dark table-bordered">
+    <thead>
+      <tr>
+        <th> <a href="{% url 'PersonnalUse' %}">
                     <img src="https://raw.githubusercontent.com/deevensaam/Photos/main/Presonal%20use.jpeg" alt="" width="450" height="208" class = "center"></img>
-                </a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a href="{% url 'InstituteUse' %}">
+                </a></th>
+        <th><a href="{% url 'InstituteUse' %}">
                     <img src ="https://raw.githubusercontent.com/deevensaam/Photos/main/inst-use.jpeg" alt="" width="450" height="208" class = "center"></img>
-                </a>
-            </li>
-        </ul>
-    </div>
+                </a></th>
+       
+      </tr>
+    </thead></table>
+
     
+    </div>
+    <script>
+        var j=0;
+function changer() {
+                    i = document.getElementById('tim');
+                    var col = ["red","blue"];
+                    i.style.color = col[j];
+                    i.style.transition = "2s";
+                    j = (j + 1) % col.length;
+            }
+            setInterval(changer,2000);
+    </script>
 </body>
 {% endblock %}

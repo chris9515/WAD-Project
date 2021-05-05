@@ -5,7 +5,12 @@
     <title>
         Institue Login
     </title>
-    <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}"
+    <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
     <!-- <h1>Time Table Planner</h1> -->
@@ -28,19 +33,22 @@
         </li>
     </ul> -->
     <div class="boxed">
-        <h2>PLEASE  SELECT  FROM  BELOW</h2>
+        <h2 style="color:white;font-family: 'Orelega One', cursive;font-size: 50px;"><b>PLEASE  SELECT  FROM  BELOW</b></h2>
         </div>
         <br></br>
           <div class = "center">
-          <a href="admin"><img src=" https://ucdabenefits.com/wp-content/uploads/2013/04/admin.png" alt="Admin" width="450" height="208" class = "center"></img></a>
-          <br></br>
-                  <a href="{% url 'facultyLogin' %}">
+              <table class="table table-dark table-bordered">
+    <thead>
+      <tr>
+        <th><a href="admin"><img src=" https://ucdabenefits.com/wp-content/uploads/2013/04/admin.png" alt="Admin" width="450" height="208" class = "center"></img></a></th>
+        <th><a href="{% url 'facultyLogin' %}">
               <img src="https://www.snlpcp.ac.in/images/faculty-login.jpg" alt="ttg" width="450" height="208" class = "center"></img>
-          </a>
-          <br></br>
-              <a href = "{% url 'studentLogin' %}">
+          </a></th>
+        <th><a href = "{% url 'studentLogin' %}">
               <img src ="https://bansal.ac.in/images/student_login.jpg" alt="dp" usemap="#0.2_media" width="450" height="208" class = "center"></img>
-          </a>
-          </div>
+          </a></th>
+      </tr>
+    </thead></table>
+    </div>
 </body>
 {% endblock %}
