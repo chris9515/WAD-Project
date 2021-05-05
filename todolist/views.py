@@ -11,6 +11,9 @@ from django.http import HttpResponseRedirect
 #     template_name = 'dailyPlanner.html'
 #     def get_queryset(self):
 #         return ToDoList.objects.all()
+def GetHome(request):
+    return render(request, 'home.html')
+
 def DailyPlanner(request):
     form = TodoForm()
     if request.method == "POST":
