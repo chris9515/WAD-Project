@@ -20,7 +20,6 @@
   color: #402d2d;
   letter-spacing: 0.5px;
 }
-
 .signin_header{
   display: flex;
   flex-direction: column;
@@ -38,11 +37,13 @@
 .std_signin{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;  
+  padding: 2% 5%;
   background-color:cadetblue; 
   width: 28%;
-  height: 55vh;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;  
 }
 
 .signin_box_div{
@@ -67,7 +68,9 @@
 }
 .signup_div{
   text-align:center;
+  font-size: 18px;
   color: rgb(182, 174, 174);
+  padding-top: 5px ;
 }
 .signup_div a{
   color: #423F40;
@@ -314,12 +317,12 @@ letter-spacing: 1px;
 }
 
 tr:nth-child(odd) {
-background:#8d8f8d;
+background:seashell;
 color:black;
 }
 tr:nth-child(1) {
 padding: 15px 3px;
-background-color:#28282B;
+background-color:indianred;
 color: white;
 text-transform: uppercase;
 letter-spacing: 2px;
@@ -327,7 +330,7 @@ font-family: Verdana, Tahoma, sans-serif;
 font-weight: 530;
 }
 tr:nth-child(even) {
-background-color:  #979A9A;
+background-color:rgb(252, 242, 230);
 color:black;
 }
 .ipform {
@@ -366,12 +369,12 @@ font-family:arial;
 float: right;
 font-size: 25px;
 cursor: pointer;
-color:maroon;   
+color:whitesmoke;   
 padding: 1px 6px;
-border-radius: 25px;;
+
 }
 .close:hover {
-background: #f5b099;
+background: #948783;
 }
 .modalInput5{
 width: 250px;
@@ -379,15 +382,14 @@ border-radius: 5px;
 font-size: 14px;
 }
 .Btn{
-font-size: 15px;
-font-family:arial;
-font-weight: bold;  
+font-size: 17px;
+font-weight:500; 
 letter-spacing: 1px;
 text-align: center;
 display: inline-block;
 border-radius: 8px;
-background-color: #493b76;
-color:rgb(221, 219, 219);
+background-color:teal;
+color:cornsilk;
 padding:13px 20px;
 cursor: pointer;
 margin: 3%;
@@ -395,7 +397,7 @@ margin-bottom: 0;
 
 }
 .Btn:hover {
-background-color:#694577;
+background-color:rgb(4, 105, 105);
 }
 .genBtn{
 font-size: 15px;
@@ -405,11 +407,11 @@ letter-spacing: 1px;
 text-align: center;
 display: inline-block;
 border-radius: 8px;
-background-color: #493b76;
+background-color:rebeccapurple;
 color:white;
 padding:10px 15px;
 cursor: pointer;
-margin: 2% auto;
+margin: 5% auto;
 }
 .genBtn:hover {
 background-color: #694577;
@@ -422,20 +424,19 @@ display:inline-block;
 .genSpan{
 width: 400px;
 display: inline-block;
-font-size: 13px;
-padding-top: 12px; 
+font-size: 15px;
+padding-top: 10px; 
 padding-bottom: 4px;
-font-family: "Arimo";
 text-transform: uppercase;
-letter-spacing: 1.5px;
-color: maroon;
+letter-spacing: 1.2px;
+color: cornflowerblue;
+font-weight: 500;
 }
 .genInput,.breInput,.breInput2{
 font-size: 15px;
 min-height: 25px;
 letter-spacing: 1.5px;
-font-family: "Arimo";
-color: maroon;
+
 }
 .red{
 color:red !important;
@@ -460,7 +461,11 @@ h1{
   font-family:arial;
   }
   h6{
-    font-size: 24px;
+    color:honeydew;
+    font-size: 40px;
+    text-align: center;
+    padding: 20px;
+    letter-spacing: 1px;
   }
   .input_div{
     display: flex;
@@ -572,9 +577,10 @@ h1{
           color:rgb(0, 0, 0);
         }
         .about-section {
-          padding: 25px;
+          padding-top: 60px;
           text-align: center;
-          background-color: #1a1a1b;
+          background-color: teal;
+          height: 200px;
         }
         .container {
           padding: 20px 15px;
@@ -590,7 +596,7 @@ h1{
           letter-spacing: .5px;
           padding: 8px;
           color: white;
-          background-color: #1b1b1b;
+          background-color: rgb(27, 27, 27);
           text-align: center;
           cursor: pointer;
           width: 95%;
@@ -598,11 +604,12 @@ h1{
           margin:1.5%;
           display: inline-block;
           font-family: sans-serif;
+          bottom: 0;
         }
         
         .button:hover {
-          background-color:white;
-          color:black;
+          background-color:rgb(39, 38, 38);
+          color:whitesmoke;
         }
         .center {
           display: block;
@@ -656,7 +663,19 @@ h1{
         }
         .clmn{
             float: left;
-            width: 50%;    
+            width: 45%;  
+            background-color:#FEF9E7;
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+        .clmn p{
+          font-size: 30px;
+          margin: 0% 5%;
+          letter-spacing: 1px;
+          font-weight: bold;
+          text-align: center;
+          text-transform: uppercase;
+          color: #402d2d;
         }
         .cl{
           float: left;
@@ -786,9 +805,8 @@ label{
    font-weight: 450;
  }
  .ot h2{
-   font-size: 28px;
-   font-style: italic;
-   font-weight: 700;
-   letter-spacing: 3px;
-   color: #d9b08c;
- }
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 3px;
+}

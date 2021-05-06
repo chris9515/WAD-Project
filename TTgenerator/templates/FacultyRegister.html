@@ -13,20 +13,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <h1  style="color:white;font-family: 'Orelega One', cursive;font-size: 50px;"><b>Faculty Sign-Up</b></h1>
-<form action="" method="POST">
+  <h6>Faculty Sign Up</h6>
+<form action="" method="POST" class="std_signin">
     {% csrf_token %}
   <div class="container-fluid">{{ form.as_p }}</div>
     
   
     <input type="text" placeholder="subject" name="subject">
+    <br>
     <input type="submit" value="Register">
-    <p>
-      <h5>
-      Have an account?  
-      </h5>
-      <a href="{% url 'facultyLogin' %}">login</a> 
-    </p>
+      <div class="signup_div">
+        <span><b>Have an account? </b><br>
+        <a href="{% url 'facultyLogin' %}">Log in</a></span>
+      </div>
   
   
     {% if form.errors or messages %}

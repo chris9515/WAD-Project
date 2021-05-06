@@ -8,20 +8,22 @@
 <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
 </head>
 <body>
-  <h2>Student Login</h2>
-<form action="" method="POST">
+  <br>
+  <h6>Student Sign up</h6>
+<form action="" method="POST" class="std_signin">
     {% csrf_token %}
   
     {{ form.as_p }}
   
     <input type="date" placeholder="year" name="year">
+    <br>
     <input type="submit" value="Register">
-    <p>
-      <h5>
-      Have an account?  
+    <div class="signup_div">
+      <span><b>Have an account?  </b><br>
       </h5>
       <a href="{% url 'studentLogin' %}">login</a> 
-    </p>
+    </span>
+    </div>
   
   
     {% if form.errors or messages %}
@@ -36,6 +38,7 @@
     </div>
     {% endif %}
   </form>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
