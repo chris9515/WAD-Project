@@ -12,7 +12,13 @@
   align-items: center;
   justify-content: center;
   background-color:#FFFFE0;
-  margin-top: 0%;
+  margin-top: -20px;
+}
+.signin_main_div h2{
+  font-size: 45px;
+  font-weight: bold;
+  color: #402d2d;
+  letter-spacing: 0.5px;
 }
 
 .signin_header{
@@ -20,6 +26,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;  
+}
+.signup{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  margin: 3% 20%;
+  background-color: cornflowerblue;
+}
+.std_signin{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  background-color:cadetblue; 
+  width: 28%;
+  height: 55vh;
 }
 
 .signin_box_div{
@@ -49,6 +72,7 @@
 .signup_div a{
   color: #423F40;
 }
+
 .username_div, .password_div, .submit_div{
   margin: 10px 0px;
   width: 55%;
@@ -237,6 +261,7 @@ overflow: hidden;
 width: 100%;
 top: 0; 
 position: fixed;
+margin-bottom: 0;
 }
 .nav-bar ul 
 {
@@ -261,7 +286,6 @@ color:white;
 transition: 1s;
 }
 body{
-padding-top: 20px;
 overflow: auto;
 background-color: #423F40;
 margin-left: 0%;
@@ -309,12 +333,13 @@ color:black;
 .ipform {
 text-align:center;
 position: absolute;
-top: 0;
 left: 0;
 right: 0;
-background-color: #E9967A;
-margin: 15px auto;
-padding: 10px 15px;
+top: 8%;
+background-color: #28282B;
+margin:  auto;
+margin-top: 0%;
+padding: 25px 15px;
 padding-bottom: 30px;
 width: 30%;
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -687,14 +712,16 @@ h1{
           color: #000000;
           text-align: center;
         }
-        h6
+        .tableInp h6
         {
-          font-size: 24px;
-    text-align:center;
-    color: #493b76;
-    letter-spacing: 1px;
-    font-family:arial;
-    margin-bottom: 0%;
+          padding-top: 30px;
+          font-size: 30px;
+          text-align:center;
+          color:darkseagreen;
+          text-transform: uppercase;
+          letter-spacing: 1.8px;
+          font-weight: bold;
+          font-family: 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
         }
 
 .main{

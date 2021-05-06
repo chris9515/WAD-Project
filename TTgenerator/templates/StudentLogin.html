@@ -8,21 +8,23 @@
   <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
   </head>
 <body>
+  <div class="signin_main_div">
+  <br>
 <h2>Student Login</h2>
-<h1>{{ type }}</h1>
-<form action="" method="POST">
+<form action="" method="POST" class="std_signin">
+  <h1>{{ type }}</h1>
   {% csrf_token %}
   {{ form.username }}
+  <br>
   {{ form.password }}
-
-  <input type="submit" value="Login">
-  <p>
-    <h5>
-    Don't have an account? 
-    </h5>
+<div class="submit_div">
+  <input type="submit" value="Login" class="submit_btn">
+</div>
+  <div class="signup_div">
+    <span><b> Don't have an account? </b><br> 
     <a href="{% url 'studentSignUp' %}">Sign up</a> 
-  </p>
-  
+  </span>
+</div>
 
   {% for message in messages %}
   <div class="error">
@@ -34,6 +36,7 @@
   {% endfor %}
   
 </form>
+  </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
