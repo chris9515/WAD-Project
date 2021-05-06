@@ -11,7 +11,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color:#FFFFE0;
+  margin-top: 0%;
 }
 
 .signin_header{
@@ -19,29 +20,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;  
-  margin: 20px 0px;
 }
 
 .signin_box_div{
-  margin: 20px 0px;
+  margin: 10px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30%;
-  height: 40vh;
+  width: 28%;
+  height: 55vh;
+
 }
 
 .signin_form{
   width: 100%;
   height: 100%;
-  background-color: whitesmoke;
+  background-color: indianred;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+.signup_div{
+  text-align:center;
+  color: rgb(182, 174, 174);
+}
+.signup_div a{
+  color: #423F40;
+}
 .username_div, .password_div, .submit_div{
   margin: 10px 0px;
   width: 55%;
@@ -58,9 +65,9 @@
 }
 
 .submit_btn{
-  width: 100%;
+  width: 50%;
   height: 100%;
-  padding: 5px;
+  padding-bottom: 5px;
   text-align: center;
 }
 /* start */
@@ -414,9 +421,6 @@ font-size: 14px;
 }
 }
 
-img {
-  border: 5px solid rgb(160, 96, 212);
-}
 .styling{
   font-size: 60px;
   font-weight: 800;
@@ -579,7 +583,109 @@ h1{
           display: block;
           margin-left: auto;
           margin-right: auto;
-          width: 50%;
+          width: 55%;
+        }
+        .crd1 {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          margin: 15px;
+          background-image: url(https://i.pinimg.com/originals/fd/4d/0d/fd4d0d14ea80102c3769405da1b3e0fd.jpg);
+          background-size: 100% 100%;
+          text-align: center;
+          height: 270px;
+
+        }
+        .crd2 {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          margin: 15px;
+          background-image: url(https://www.fnu.edu/wp-content/uploads/2016/12/homework-1735644_640.png);
+          background-size: 100% 100%;
+          text-align: center;
+          height: 270px;
+        }
+        .c1 {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          margin: 5px;
+          background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRERw1PnRUZDBDkF4-yIXhQw_9LSAVM2ccijMxosc3nzjFDh27MZQBDjT5wMFmdJnr7bgU&usqp=CAU);
+          background-size: 100% 100%;
+          text-align: center;
+          height: 270px;
+          width: 90%;
+        }
+        .c2 {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          margin: 5px;
+          background-image: url(https://www.workisback.com/img/employee-icon.jpg);
+          background-size: 100% 100%;
+          text-align: center;
+          height: 270px;
+          width: 90%;
+        }
+        .c3 {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          margin: 5px;
+          background-image: url(https://www.iconbunny.com/icons/media/catalog/product/9/7/97.10-team-icon-iconbunny.jpg);
+          background-size: 100% 100%;
+          text-align: center;
+          height: 270px;
+          width: 90%;
+        }
+        .clmn{
+            float: left;
+            width: 50%;    
+        }
+        .cl{
+          float: left;
+          width: 33%;     
+      }
+      .c1 a{
+        text-decoration: none;
+        padding: 2% 77px; 
+        letter-spacing: 0.6px;
+        font-size: 30px;
+        color: #000000;
+        text-align: center;
+        width: 100%;
+        font-weight:bold;
+        background-color:darkcyan;
+        top: 238px;
+        position: relative;
+        color: cornsilk;
+      }
+      .c2 a{
+        text-decoration: none;
+        padding: 2% 73.5px; 
+        letter-spacing: 0.6px;
+        font-size: 30px;
+        color: #000000;
+        text-align: center;
+        width: 100%;
+        font-weight:bold;
+        background-color: indianred;
+        top: 238px;
+        position: relative;
+        color: cornsilk;
+      }
+      .c3 a{
+        text-decoration: none;
+        padding: 2% 66.5px; 
+        letter-spacing: 1px;
+        font-size: 30px;
+        color: #000000;
+        text-align: center;
+        width: 100%;
+        font-weight:bold;
+        background-color:cornflowerblue;
+        top: 238px;
+        position: relative;
+        color: cornsilk;
+      }
+        .clmn a{
+          text-decoration: none;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-size: 35px;
+          color: #000000;
+          text-align: center;
         }
         h6
         {

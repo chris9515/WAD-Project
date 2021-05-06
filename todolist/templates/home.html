@@ -20,17 +20,18 @@
 <h2 style="color:white;font-family: 'Orelega One', cursive;font-size: 50px;"><b>PLEASE  SELECT  FROM  BELOW</b></h2>
 </div>
 <br>
-<div class = "center" style="margin-top: 7%;">
-    <table class="table table-bordered">
-    <thead >
-    <tr>
-        <th>    <a href = "{% url 'TTGenerator' %}">
-    <img src="https://raw.githubusercontent.com/deevensaam/Photos/main/Lucky%20desin%202.png" alt="ttg" width="450" height="208" class = "center" />
-</a></th>
-        <th><a href = "{% url 'todolist' %}">
-    <img src ="https://raw.githubusercontent.com/deevensaam/Photos/main/Lucky%20design%203.png" alt="dp" width="450" height="208" class = "center" />
-</a></th>
-    </tr>
-    </thead>
+<div class = "center" style="margin-top: 5%;">
+    <div class="clmn">   
+    <div class="crd1">   
+            <br><br><br><br>
+             <a href = "{% url 'TTGenerator' %}"> Timetable Generator</a>
+        </div>
+    </div>
+    <div class="clmn">
+        <div class="crd2"> 
+            <br><br><br><br>
+          <a href = "{% url 'todolist' %}"> Day <br>Planner </a>
+        </div>
+</div>
 </div>
 {% endblock %}

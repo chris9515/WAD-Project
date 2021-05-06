@@ -36,19 +36,23 @@
         <h2 style="color:white;font-family: 'Orelega One', cursive;font-size: 50px;"><b>PLEASE  SELECT  FROM  BELOW</b></h2>
         </div>
         <br></br>
-          <div class = "center">
-              <table class="table table-dark table-bordered">
-    <thead>
-      <tr>
-        <th><a href="admin"><img src=" https://ucdabenefits.com/wp-content/uploads/2013/04/admin.png" alt="Admin" width="450" height="208" class = "center"></img></a></th>
-        <th><a href="{% url 'facultyLogin' %}">
-              <img src="https://www.snlpcp.ac.in/images/faculty-login.jpg" alt="ttg" width="450" height="208" class = "center"></img>
-          </a></th>
-        <th><a href = "{% url 'studentLogin' %}">
-              <img src ="https://bansal.ac.in/images/student_login.jpg" alt="dp" usemap="#0.2_media" width="450" height="208" class = "center"></img>
-          </a></th>
-      </tr>
-    </thead></table>
+        <div class = "center">
+            <div class="cl">   
+                <div class="c1">
+                    <a href="admin">Admin</a>
+                </div>  
+                
+            </div>
+            <div class="cl">  
+                <div class="c2">
+                    <a href="{% url 'facultyLogin' %}">Faculty</a>
+                </div>
+            </div>        
+            <div class="cl">  
+                <div class="c3">
+                    <a href = "{% url 'studentLogin' %}">Student</a>
+                </div>
+            </div>
     </div>
 </body>
 {% endblock %}
