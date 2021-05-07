@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="{% static 'css/SASS/TimeTablePlanner.css' %}">
 </head>
 {% csrf_token %}
-<a href="{% url 'logout' %}">Log out</a>
+<div class="buttons">
 {% if user.is_staff %}
-    <a href="{% url 'teacherProfile' %}">View Profile</a>
+<div class="viewprobtn">
+    <a href="{% url 'teacherProfile' %}">View Profile</a></div>
 {% elif not user.is_staff %}
-    <a href="{% url 'studentProfile' %}">View Profile</a>
+<div class="viewprobtn">
+    <a href="{% url 'studentProfile' %}">View Profile</a></div>
 {% endif %}
-<a href="{% url 'create_schedule' %}">Scheduele</a>
-
+<div class="schbtn">
+<a href="{% url 'create_schedule' %}">Scheduele</a></div>
+<div class="logoutbtn">
+    <a href="{% url 'logout' %}">Log out</a></div>
+</div>
   
 {% endblock %}
