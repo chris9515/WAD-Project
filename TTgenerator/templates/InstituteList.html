@@ -10,7 +10,7 @@
     <tbody>
         {% for i in instructors %}
             <tr>
-                <td>{{i.instituteID}}</td>
+                <td>{{i.instructorID}}</td>
                 <td>{{i.name}}</td>
                 <td>
                     <form action="{% url 'deleteInstructor' i.id %}" method="POST">

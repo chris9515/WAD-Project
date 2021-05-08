@@ -48,7 +48,7 @@ class InstructorForm(ModelForm):
     class Meta:
         model = Instructor
         fields = [
-            'instituteID',
+            'instructorID',
             'name'
         ]
 

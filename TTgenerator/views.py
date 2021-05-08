@@ -232,7 +232,7 @@ class Schedule:
                 for course in courses:
                     for i in range(n // len(courses)):
                         crs_inst = course.instructors.all()
-                        newClass = Class(self._classNumb, dept, section.section_id, course)
+                        newClass = Class(self._classNumb, dept, section.sectionID, course)
                         self._classNumb += 1
                         newClass.set_meetingTime(data.get_meetingTimes()[rand.randrange(0, len(MeetingTime.objects.all()))])
                         newClass.set_room(data.get_rooms()[rand.randrange(0, len(data.get_rooms()))])
@@ -262,7 +262,7 @@ class Schedule:
             for j in range(len(classes)):
                 if j >= i:
                     if (classes[i].meeting_time == classes[j].meeting_time) and \
-                            (classes[i].section_id != classes[j].section_id) and (classes[i].section == classes[j].section):
+                            (classes[i].sectionID != classes[j].sectionID) and (classes[i].section == classes[j].section):
                         if classes[i].room == classes[j].room:
                             self._numberOfConflicts += 1
                         if classes[i].instructor == classes[j].instructor:
@@ -328,16 +328,16 @@ class GeneticAlgorithm:
 
 class Class:
     def __init__(self, id, dept, section, course):
-        self.section_id = id
+        self.sectionID = id
         self.department = dept
         self.course = course
         self.instructor = None
-        self.meeting_time = None
+        self.meetingTime = None
         self.room = None
         self.section = section
 
     def get_id(self): 
-        return self.section_id
+        return self.sectionID
 
     def get_dept(self): 
         return self.department
@@ -349,7 +349,7 @@ class Class:
         return self.instructor
 
     def get_meetingTime(self): 
-        return self.meeting_time
+        return self.meetingTime
 
     def get_room(self): 
         return self.room
@@ -358,7 +358,7 @@ class Class:
         self.instructor = instructor
 
     def set_meetingTime(self, meetingTime): 
-        self.meeting_time = meetingTime
+        self.meetingTime = meetingTime
 
     def set_room(self, room): 
         self.room = room
@@ -372,13 +372,13 @@ def context_manager(schedule):
     context = []
     cls = {}
     for i in range(len(classes)):
-        cls["section"] = classes[i].section_id
-        cls['dept'] = classes[i].department.dept_name
-        cls['course'] = f'{classes[i].course.course_name} ({classes[i].course.course_number}, ' \
-                        f'{classes[i].course.max_numb_students}'
-        cls['room'] = f'{classes[i].room.r_number} ({classes[i].room.seating_capacity})'
-        cls['instructor'] = f'{classes[i].instructor.name} ({classes[i].instructor.uid})'
-        cls['meeting_time'] = [classes[i].meeting_time.pid, classes[i].meeting_time.day, classes[i].meeting_time.time]
+        cls["section"] = classes[i].sectionID
+        cls['dept'] = classes[i].department.deptName
+        cls['course'] = f'{classes[i].course.courseName} ({classes[i].course.courseID}, ' \
+                        f'{classes[i].course.maxStudents}'
+        cls['room'] = f'{classes[i].room.roomNo} ({classes[i].room.capacity})'
+        cls['instructor'] = f'{classes[i].instructor.name} ({classes[i].instructor.instructorID})'
+        cls['meeting_time'] = [classes[i].meetingTime.pid, classes[i].meetingTime.day, classes[i].meetingTime.time]
         context.append(cls)
     return context
 
