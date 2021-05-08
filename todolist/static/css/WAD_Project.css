@@ -45,7 +45,10 @@
   justify-content: center;
   align-items: center;  
 }
-
+.std_signin p{
+  color: cornsilk;
+  font-style: none;
+}
 .signin_box_div{
   margin: 10px 0px;
   display: flex;
@@ -75,7 +78,39 @@
 .signup_div a{
   color: #423F40;
 }
-
+.buttons{
+  margin: 10% 40%;
+}
+.logoutbtn{
+  text-align: center;
+  border-radius: 8px;
+  background-color:teal;
+  margin-top: 10%;
+  padding:13px 20px;
+  cursor: pointer;
+  }
+  .viewprobtn{
+    text-align: center;
+    border-radius: 8px;
+    background-color:cornflowerblue;
+    margin-top: 10%;
+    padding:13px 20px;
+    cursor: pointer;
+    }
+    .schbtn{
+      text-align: center;
+      border-radius: 8px;
+      background-color:indianred;
+      margin-top: 10%;
+      padding:13px 20px;
+      cursor: pointer;
+      }
+  .buttons a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 24px;
+    font-weight:700; 
+  }
 .username_div, .password_div, .submit_div{
   margin: 10px 0px;
   width: 55%;
@@ -339,7 +374,7 @@ position: absolute;
 left: 0;
 right: 0;
 top: 8%;
-background-color: #28282B;
+background-color:#131313;
 margin:  auto;
 margin-top: 0%;
 padding: 25px 15px;
@@ -548,6 +583,12 @@ h1{
             font-size: 20px;
             color:rgb(82, 50, 29);
         }
+        .card h3{
+          font-style: italic;
+          font-size: 18px;
+          color:darkslategrey;
+          font-weight: 700;
+      }
         h4{
           font-style: italic;
           font-size: 40px;
@@ -579,7 +620,7 @@ h1{
         .about-section {
           padding-top: 60px;
           text-align: center;
-          background-color: teal;
+          background-color: #116466;
           height: 200px;
         }
         .container {
@@ -619,7 +660,7 @@ h1{
         }
         .crd1 {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          margin: 15px;
+          margin: 8px;
           background-image: url(https://i.pinimg.com/originals/fd/4d/0d/fd4d0d14ea80102c3769405da1b3e0fd.jpg);
           background-size: 100% 100%;
           text-align: center;
@@ -628,7 +669,7 @@ h1{
         }
         .crd2 {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          margin: 15px;
+          margin: 8px;
           background-image: url(https://www.fnu.edu/wp-content/uploads/2016/12/homework-1735644_640.png);
           background-size: 100% 100%;
           text-align: center;
@@ -664,7 +705,7 @@ h1{
         .clmn{
             float: left;
             width: 45%;  
-            background-color:#FEF9E7;
+            background-color:	cornsilk;
             margin-left: 20px;
             margin-right: 10px;
         }
@@ -672,10 +713,12 @@ h1{
           font-size: 30px;
           margin: 0% 5%;
           letter-spacing: 1px;
-          font-weight: bold;
+          font-weight: 800;
           text-align: center;
           text-transform: uppercase;
-          color: #402d2d;
+          color:  #402d2d;
+          font-style: italic;
+          font-family: 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
         }
         .cl{
           float: left;
@@ -727,9 +770,11 @@ h1{
           text-decoration: none;
           text-transform: uppercase;
           letter-spacing: 2px;
-          font-size: 35px;
-          color: #000000;
+          font-size: 40px;
+          color: #402d2d;
           text-align: center;
+          font-style: italic;
+          font-weight: 800;
         }
         .tableInp h6
         {
