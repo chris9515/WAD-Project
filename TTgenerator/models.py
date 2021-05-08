@@ -20,3 +20,20 @@ class Teacher(models.Model):
     subject = models.CharField(max_length = 30, default="Maths")
     def __str__(self):
         return self.user.username
+
+# class Period(models.Model):
+#     periodLength = models.CharField(max_length=20)
+#     period = models.CharField(max_length=20)
+
+# class Timetable(models.Model):
+
+class Instructor(models.Model):
+    ID = models.CharField(max_length=10)
+    name = models.CharField(max_length=30)
+    def __Str__(self):
+        return f'{self.ID}{self.name}'
+
+class Course(models.Model):
+    courseID = models.CharField(max_length=10, primary_key=True)
+    courseName = models.CharField(max_length=30)
+    instructors = models.ManyToManyField()        
