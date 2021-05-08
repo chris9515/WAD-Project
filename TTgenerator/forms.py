@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student, Teacher
+from .models import *
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.admin import User
 from django.forms import ModelForm
@@ -34,3 +34,53 @@ class CustomAuthenticateForm(AuthenticationForm):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget = forms.TextInput(attrs={'placeholder' : 'username'})
         self.fields['password'].widget = forms.TextInput(attrs={'placeholder' : 'password', 'type' : 'password'})
+
+class RoomForm(ModelForm):
+    class Meta:
+        model = Room
+        fields = [
+            'roomNo',
+            'capacity'
+        ]
+
+
+class InstructorForm(ModelForm):
+    class Meta:
+        model = Instructor
+        fields = [
+            'ID',
+            'name'
+        ]
+
+
+class MeetingTimeForm(ModelForm):
+    class Meta:
+        model = MeetingTime
+        fields = [
+            'pid',
+            'time',
+            'day'
+        ]
+        widgets = {
+            'pid': forms.TextInput(),
+            'time': forms.Select(),
+            'day': forms.Select(),
+        }
+
+
+class CourseForm(ModelForm):
+    class Meta:
+        model = Course
+        fields = ['courseID', 'courseName', 'maxStudents', 'instructors']
+
+
+class DepartmentForm(ModelForm):
+    class Meta:
+        model = Department
+        fields = ['deptName', 'courses']
+
+
+class SectionForm(ModelForm):
+    class Meta:
+        model = Section
+        fields = ['sectionID', 'department', 'noClassesInWeek']

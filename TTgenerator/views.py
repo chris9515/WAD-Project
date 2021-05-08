@@ -1,12 +1,14 @@
 from django.shortcuts import redirect, render
 from .models import Teacher, Student
-from .forms import CustomUserCreationForm, StudentForm, CustomAuthenticateForm
+from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .utilities import processFacultyRegistrarionForm, schedulingalgo
 from django.contrib import messages
 from django.contrib.auth.models import User
 import json
+import random as rand
+
 
 # Create your views here.
 def TimeTableGenerator(request):
