@@ -51,7 +51,7 @@ TOURNAMENT_SELECTION_SIZE = 3
 MUTATION_RATE = 0.1
 
 class Instructor(models.Model):
-    ID = models.CharField(max_length=10)
+    instituteID = models.CharField(max_length=10)
     name = models.CharField(max_length=30)
     def __str__(self):
         return f'{self.ID} {self.name}'
