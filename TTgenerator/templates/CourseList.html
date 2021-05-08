@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<a href="{% url 'addCourse' %}">Add Course</a>
+<h1>Edit Course</h1>
+<table>
+    <tr>
+        <th>Course Code</th>
+        <th>Course Name</th>
+        <th>Max no. of students</th>
+        <th></th>
+    </tr>
+    <tbody>
+        {% for i in courses %}
+        <tr>
+            <td>{{i.courseID}}</td>
+            <td>{{i.courseName}}</td>
+            <td>{{i.maxStudents}}</td>
+            <td>
+                <form action="{% url 'deleteCourse' i.courseID %}">
+                    {% csrf_token %}
+                    <input type="submit" value="X">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

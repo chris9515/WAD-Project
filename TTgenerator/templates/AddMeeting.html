@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'editMeetingTime' %}">Edit Meeting</a>
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

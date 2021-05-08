@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Department</th>
+        <th>Total Classes</th>
+        <th></th>
+    </tr>
+    <tbody>
+        {% for i in sections %}
+            <tr>
+                <td>{{i.sectionID}}</td>
+                <td>{{i.department}}</td>
+                <td>{{i.noClassesInWeek}}</td>
+                <td>
+                    <form action="{% url 'deleteSection' i.secionID %}">
+                        {% csrf_token %}
+                        <input type="submit" value="X">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

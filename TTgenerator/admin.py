@@ -5,7 +5,7 @@ from .models import *
 admin.site.register(Student)
 admin.site.register(Teacher)
 admin.site.register(MeetingTime)
-# admin.site.register(MeetingTime)
+admin.site.register(Instructor)
 admin.site.register(Course)
 admin.site.register(Department)
 admin.site.register(Section)

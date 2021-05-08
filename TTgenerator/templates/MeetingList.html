@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Day</th>
+        <th>Timing</th>
+        <th></th>
+    </tr>
+    <tbody>
+        {% for i in meetingTimes %}
+            <tr>
+                <td>{{i.pid}}</td>
+                <td>{{i.day}}</td>
+                <td>{{i.time}}</td>
+                <td>
+                    <form action="{% url 'deleteMeetingTime' i.pid %}">
+                        {% csrf_token %}
+                        <input type="submit" value="X">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

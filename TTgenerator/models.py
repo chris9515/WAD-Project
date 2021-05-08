@@ -54,7 +54,7 @@ class Instructor(models.Model):
     instituteID = models.CharField(max_length=10)
     name = models.CharField(max_length=30)
     def __str__(self):
-        return f'{self.ID} {self.name}'
+        return f'{self.instituteID} {self.name}'
 
 class Course(models.Model):
     courseID = models.CharField(max_length=10, primary_key=True)

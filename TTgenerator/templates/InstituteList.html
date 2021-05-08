@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% load static %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    <tbody>
+        {% for i in instructors %}
+            <tr>
+                <td>{{i.instituteID}}</td>
+                <td>{{i.name}}</td>
+                <td>
+                    <form action="{% url 'deleteInstructor' i.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="X">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

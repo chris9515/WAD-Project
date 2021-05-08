@@ -99,53 +99,54 @@ def logoutView(request):
 def create_schedule(request):
     if request.method == 'POST':    
         data  = request.POST
-        print(data)
-        week=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-        subjects = request.POST.getlist('subject')
-        periods = request.POST.getlist('periods')
-        start_time = request.POST.get('startTime')
-        end_time = request.POST.get('endTime')
-        break_time = request.POST.get('breakTime')
-        duration = request.POST.get('breakDuration')
-        subject_data = dict()
-        for i in range(len(subjects)):  
-            subject_data[subjects[i]] = periods[i]
-        print(subject_data)
-        output,times = schedulingalgo(start_time,end_time,break_time,duration,subject_data)
-        list2 = []
-        for i in range(len(times)-1):
-            hi,mi =times[i].split(":")
-            ho,mo = "1:00".split(":")
-            hi = int(hi) 
-            ho=int(ho)
-            mi=int(mi) 
-            mo=int(mo)
-            h = hi+ho   
-            m = mi+mo
-            if m>60:
-                h+=1
-                m=m%60
-            if len(str(m))<2 : 
-                time1 = str(h)+":"+str(m)+'0'
-            else:
-                time1 = str(h)+":"+str(m)
-            time = times[i] + '-'+ time1
-            list2.append(time)
-        for i in output.keys():
-            output[i] =dict([(value, key) for key, value in output[i].items()])
-        # print(output)
-        times.pop()
-        for i in output.keys():
-            for j in times:
-                if j in output[i].keys():
-                    continue
-                else:
-                    output[i][j] = ' None'
-            output[i]['12:00']='LUNCH'        
-        for i in output.keys():
-            output[i] = dict(sorted(output[i].items(), key = lambda x : int(x[0].split(":")[0] + x[0].split(":")[1]) ))
-        dict(sorted(output.items()))
-        return render(request, 'TimetableResponse.html', {'output' : output,'times':times,'list2':list2, 'week':week, 'subjects':subject_data})
+        # print(data)
+        # week=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+        # subjects = request.POST.getlist('subject')
+        # periods = request.POST.getlist('periods')
+        # start_time = request.POST.get('startTime')
+        # end_time = request.POST.get('endTime')
+        # break_time = request.POST.get('breakTime')
+        # duration = request.POST.get('breakDuration')
+        # subject_data = dict()
+        # for i in range(len(subjects)):  
+        #     subject_data[subjects[i]] = periods[i]
+        # print(subject_data)
+        # output,times = schedulingalgo(start_time,end_time,break_time,duration,subject_data)
+        # list2 = []
+        # for i in range(len(times)-1):
+        #     hi,mi =times[i].split(":")
+        #     ho,mo = "1:00".split(":")
+        #     hi = int(hi) 
+        #     ho=int(ho)
+        #     mi=int(mi) 
+        #     mo=int(mo)
+        #     h = hi+ho   
+        #     m = mi+mo
+        #     if m>60:
+        #         h+=1
+        #         m=m%60
+        #     if len(str(m))<2 : 
+        #         time1 = str(h)+":"+str(m)+'0'
+        #     else:
+        #         time1 = str(h)+":"+str(m)
+        #     time = times[i] + '-'+ time1
+        #     list2.append(time)
+        # for i in output.keys():
+        #     output[i] =dict([(value, key) for key, value in output[i].items()])
+        # # print(output)
+        # times.pop()
+        # for i in output.keys():
+        #     for j in times:
+        #         if j in output[i].keys():
+        #             continue
+        #         else:
+        #             output[i][j] = ' None'
+        #     output[i]['12:00']='LUNCH'        
+        # for i in output.keys():
+        #     output[i] = dict(sorted(output[i].items(), key = lambda x : int(x[0].split(":")[0] + x[0].split(":")[1]) ))
+        # dict(sorted(output.items()))
+        # return render(request, 'TimetablePlanner.html', {'output' : output,'times':times,'list2':list2, 'week':week, 'subjects':subject_data})
+        return render(request, 'TimeTablePlanner.html')
     return render(request, 'CreateSchedule.html')
 
 def TimeTablePlannerView(request):
@@ -225,7 +226,7 @@ class Schedule:
         sections = Section.objects.all()
         for section in sections:
             dept = section.department
-            n = section.num_class_in_week
+            n = section.noClassesInWeek
             if n <= len(MeetingTime.objects.all()):
                 courses = dept.courses.all()
                 for course in courses:
@@ -243,7 +244,7 @@ class Schedule:
                 for course in courses:
                     for i in range(n // len(courses)):
                         crs_inst = course.instructors.all()
-                        newClass = Class(self._classNumb, dept, section.section_id, course)
+                        newClass = Class(self._classNumb, dept, section.sectionID, course)
                         self._classNumb += 1
                         newClass.set_meetingTime(data.get_meetingTimes()[rand.randrange(0, len(MeetingTime.objects.all()))])
                         newClass.set_room(data.get_rooms()[rand.randrange(0, len(data.get_rooms()))])
@@ -256,7 +257,7 @@ class Schedule:
         self._numberOfConflicts = 0
         classes = self.get_classes()
         for i in range(len(classes)):
-            if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):
+            if classes[i].room.capacity < int(classes[i].course.maxStudents):
                 self._numberOfConflicts += 1
             for j in range(len(classes)):
                 if j >= i:
@@ -380,4 +381,144 @@ def context_manager(schedule):
         cls['meeting_time'] = [classes[i].meeting_time.pid, classes[i].meeting_time.day, classes[i].meeting_time.time]
         context.append(cls)
     return context
+
+def timetable(request):
+    schedule = []
+    population = Population(POPULATION_SIZE)
+    generation_num = 0
+    population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
+    geneticAlgorithm = GeneticAlgorithm()
+    while population.get_schedules()[0].get_fitness() != 1.0:
+        generation_num += 1
+        print('\n> Generation #' + str(generation_num))
+        population = geneticAlgorithm.evolve(population)
+        population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
+        schedule = population.get_schedules()[0].get_classes()
+
+    return render(request, 'timetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
+                                              'times': MeetingTime.objects.all()})
+
+def AddFaculty(request):
+    form = InstructorForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('addFaculty')
+    return render(request, 'AddFaculty.html', {'form':form})
+
+def instructorView(request):
+    context = {
+        'instructors': Instructor.objects.all()
+    }
+    return render(request, 'InstituteList.html', context)
+
+def deleteInstructor(request, pk):
+    temp = Instructor.objects.filter(pk=pk)
+    if request.method == 'POST':
+        temp.delete()
+        return redirect('editInstructor')
+
+def addRoom(request):
+    form = RoomForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('addRoom')
+    return render(request, 'AddRoom.html', {'form':form})
+
+def roomList(request):
+    context={
+        'rooms': Room.objects.all()
+    }
+    return render(request, 'RoomList.html', context)
+
+def deleteRoom(request, pk):
+    temp = Room.objects.filter(pk=pk)
+    if request.method == 'POST':
+        temp.delete()
+        return redirect('editRooms')
+
+def meetingListView(request):
+    context={
+        'meetingTime':MeetingTime.objects.all()
+    }
+    return render(request, 'MeetingList.html', context)
+
+def addMeetingTime(request):
+    form = MeetingTimeForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('addMeetingTime')
+        else:
+            print('Invalid')
+    return render(request, 'addMeeting.html', {'form':form})
+
+def deleteMeetingTime(request, pk):
+    temp = MeetingTime.objects.filter(pk=pk)
+    if request.method == 'POST':
+        temp.delete()
+        return redirect('editMeetingTime')
+
+def courseListView(request):
+    context={
+        'courses': Course.objects.all()
+    }
+    return render(request, 'CourseList.html', context)
+
+def addCourse(request):
+    form = CourseForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('addCourse')
+    else :
+        print("Invalid")
+    return render(request, 'AddCourse.html', {'form':form})
+
+def deleteCourse(request, pk):
+    temp = Course.objects.filter(pk=pk)
+    if request.method == 'POST':
+        temp.delete()
+        return redirect('editCourse')
+
+def addDepartment(request):
+    form = DepartmentForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('addDepartment')
+    return render(request, 'AddDepartment.html', {'form':form})
+
+def departmentList(request):
+    context = {
+        'departments': Department.objects.all()
+    }
+    return render(request, 'DepartmentList.html', context)
+
+def deleteDepartment(request, pk):
+    temp = Department.objects.filter(pk=pk)
+    if request.method == 'POST':
+        temp.delete()
+        return redirect('editDepartment')
+
+def addSection(request):
+    form = SectionForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('addSection')
+    return render(request, 'AddSection.html', {'form':form})
+
+def sectionList(request):
+    context = {
+        'sections': Section.objects.all()
+    }
+    return render(request, 'SectionList.html', context)
+
+def deleteSection(request, pk):
+    temp = Section.objects.filter(pk=pk)
+    if request.method == 'POST':
+        temp.delete()
+        return redirect('editSection')
 

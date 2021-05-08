@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import TimeTableGenerator, InstituteUse, StudentRegister, FacultyRegister, StudentLogin, FacultyLogin, studentProfileView, teacherProfileView, logoutView, PersonnalUse, TimeTablePlannerView
+from .views import *
 
 urlpatterns = [
     path('TTGenerator', TimeTableGenerator, name = 'TTGenerator'),
@@ -15,4 +15,23 @@ urlpatterns = [
     path('logout', logoutView, name="logout"),
     path('createschedule', views.create_schedule, name="create_schedule"),
     path('ttplanner', TimeTablePlannerView, name='ttplanner'),
+    path('timetable', timetable, name='timetable'),
+    path('addFaculty', AddFaculty, name='addFaculty'),
+    path('instructors', instructorView, name='editInstructors'),
+    path('deleteinstructor/<int:pk>/', deleteInstructor, name="deleteInstructor"),
+    path('addRoom', addRoom, name="addRoom"),
+    path('roomList', roomList, name="roomList"),
+    path('deleteRoom/<int:pk>/', deleteRoom, name="deleteRoom"),
+    path('addMeetingTime', addMeetingTime, name="addMeetingTime"),
+    path('meetingTimeList', meetingListView, name="editMeetingTime"),
+    path('deleteMeetingTime/<int:pk>/', deleteMeetingTime, name="deleteMeetingTime"),
+    path('addCourse', addCourse, name="addCourse"),
+    path('courseList', courseListView, name="editCourse"),
+    path('deleteCourse/<int:pk>/', deleteCourse, name="deleteCourse"),
+    path('addDepartment', addDepartment, name="addDepartment"),
+    path('departmentList', departmentList, name="editDepartment"),
+    path('deleteDepartment/<int:pk>/', deleteDepartment, name="deleteDepartment"),
+    path('addSection', addSection, name="addSection"),
+    path('sectionList', sectionList, name="editSection"),
+    path('deleteSection/<int:pk>/', deleteSection, name="deleteSection"),
 ]

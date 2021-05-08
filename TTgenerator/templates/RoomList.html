@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<table>
+    <tr>
+        <th>Room No.</th>
+        <th>Seating Capacity</th>
+        <th></th>
+    </tr>
+    <tbody>
+        {% for i in rooms %}
+            <tr>
+                <td>{{i.roomNo}}</td>
+                <td>{{i.capacity}}</td>
+                <td>
+                    <form action="{% url 'deleteRoom' i.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Submit">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
