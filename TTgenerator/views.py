@@ -261,7 +261,7 @@ class Schedule:
                 self._numberOfConflicts += 1
             for j in range(len(classes)):
                 if j >= i:
-                    if (classes[i].meeting_time == classes[j].meeting_time) and \
+                    if (classes[i].meetingTime == classes[j].meetingTime) and \
                             (classes[i].sectionID != classes[j].sectionID) and (classes[i].section == classes[j].section):
                         if classes[i].room == classes[j].room:
                             self._numberOfConflicts += 1
