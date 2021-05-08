@@ -143,7 +143,7 @@ def create_schedule(request):
         for i in output.keys():
             output[i] = dict(sorted(output[i].items(), key = lambda x : int(x[0].split(":")[0] + x[0].split(":")[1]) ))
         dict(sorted(output.items()))
-        return render(request, 'TimetableResponse.html', {'output' : output,'times':times,'list2':list2, 'week':week})
+        return render(request, 'TimetableResponse.html', {'output' : output,'times':times,'list2':list2, 'week':week, 'subjects':subject_data})
     return render(request, 'CreateSchedule.html')
 
 def TimeTablePlannerView(request):
