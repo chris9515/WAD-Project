@@ -15,7 +15,7 @@
                 <td>{{i.day}}</td>
                 <td>{{i.time}}</td>
                 <td>
-                    <form action="{% url 'deleteMeetingTime' i.pid %}">
+                    <form action="{% url 'deleteMeetingTime' i.pid %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" value="X">
                     </form>
