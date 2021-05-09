@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<<<<<<< HEAD
 {% if profile.user.is_staff %}
+=======
+{% if user.is_staff %}
+>>>>>>> 10fc18f15bd504005afb4f18134140486b71be26
 <span class="buttons">
   <ul>
       <li><a href="{% url 'home' %}"><p>Home</p></a></li>
@@ -13,22 +17,28 @@
       <li><a href="{% url 'addSection' %}"><p>Add Section</p></a></li>
   </ul>
 </span>
+<<<<<<< HEAD
 {% endif %}
 <!-- {% for section in sections %}
+=======
+{% elif not user.is_staff %}
+<br><br>
+{% endif %}
+{% for section in sections %}
+>>>>>>> 10fc18f15bd504005afb4f18134140486b71be26
   <h2>{{ section.sectionID }} ({{ section.department }})</h2>
       <table>
         <tr>
-          <th>Class #</th>
-          <th>Course</th>
-          <th>Room</th>
-          <th>Instructor</th>
-          <th>Class Timing</th>
+          <td>Class #</td>
+          <td>Course</td>
+          <td>Room</td>
+          <td>Instructor</td>
+          <td>Class Timing</td>
         </tr>
-        <tbody>
           {% for class in schedule %}
             {% if class.section == section.sectionID %}
             <tr>
-              <th>{{class.sectionID}}</th>
+              <td>{{class.sectionID}}</td>
               <td>{{class.course}}</td>
               <td>{{class.room}}</td>
               <td>{{class.instructor}}</td>
@@ -36,8 +46,11 @@
             </tr>
             {% endif %}
         {% endfor %}
-        </tbody>
       </table>
+<<<<<<< HEAD
 
 {% endfor %} -->
+=======
+{% endfor %}
+>>>>>>> 10fc18f15bd504005afb4f18134140486b71be26
 {% endblock %}
