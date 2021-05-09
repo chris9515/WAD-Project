@@ -442,6 +442,7 @@ def meetingListView(request):
     context={
         'meetingTime':MeetingTime.objects.all()
     }
+    print(MeetingTime.objects.all())
     return render(request, 'MeetingList.html', context)
 
 def addMeetingTime(request):
@@ -464,6 +465,7 @@ def courseListView(request):
     context={
         'courses': Course.objects.all()
     }
+    print(Course.objects.all())
     return render(request, 'CourseList.html', context)
 
 def addCourse(request):
@@ -501,6 +503,7 @@ def deleteDepartment(request, pk):
     if request.method == 'POST':
         temp.delete()
         return redirect('editDepartment')
+    
 
 def addSection(request):
     form = SectionForm(request.POST)

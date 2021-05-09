@@ -9,8 +9,9 @@
         <th></th>
     </tr>
     <tbody>
-        {% for i in meetingTimes %}
+        {% for i in meetingTime %}
             <tr>
+                <td>{{i}}</td>
                 <td>{{i.pid}}</td>
                 <td>{{i.day}}</td>
                 <td>{{i.time}}</td>
@@ -22,6 +23,7 @@
                 </td>
             </tr>
         {% endfor %}
+        <!-- {{meetingTimes}} -->
     </tbody>
 </table>
 {% endblock %}

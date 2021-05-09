@@ -17,7 +17,7 @@
             <td>{{i.courseName}}</td>
             <td>{{i.maxStudents}}</td>
             <td>
-                <form action="{% url 'deleteCourse' i.courseID %}" method="POST">
+                <form action="{% url 'deleteCourse' pk=i.courseID %}" method="POST">
                     {% csrf_token %}
                     <input type="submit" value="X">
                 </form>
