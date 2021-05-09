@@ -15,8 +15,15 @@
 <div class="viewprobtn">
     <a href="{% url 'studentProfile' %}">View Profile</a></div>
 {% endif %}
+{% if user.is_staff %}
 <div class="schbtn">
-<a href="{% url 'timetable' %}">Schedule</a></div>
+    <a href="{% url 'timetable' %}">Schedule</a>
+</div>
+{% elif not user.is_staff %}
+<div class="schbtn">
+    <a href="{% url 'timetableStudent' %}">Schedule</a>
+</div>
+{% endif %}
 <div class="logoutbtn">
     <a href="{% url 'logout' %}">Log out</a></div>
 </div>

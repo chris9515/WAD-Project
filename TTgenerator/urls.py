@@ -16,6 +16,7 @@ urlpatterns = [
     path('createschedule', views.create_schedule, name="create_schedule"),
     path('ttplanner', TimeTablePlannerView, name='ttplanner'),
     path('timetable', timetable, name='timetable'),
+    path('timetableStudent', timetable, name="timetableStudent"),
     path('addFaculty', AddFaculty, name='addFaculty'),
     path('instructors', instructorView, name='editInstructors'),
     path('deleteInstructor/<str:pk>/', deleteInstructor, name="deleteInstructor"),
