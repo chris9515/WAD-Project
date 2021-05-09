@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<form action="" method="POST">
+<form action="" method="POST" class="mid">
     {% csrf_token %}
     <h1>Add Section</h1>
-    <a href="{% url 'editSection' %}">Edit Section</a>
     {{form.as_p}}
     <input type="submit" value="Submit">
+    <br><br>
+    <a href="{% url 'editSection' %}">Edit Section</a>
 </form>
 {% endblock %}

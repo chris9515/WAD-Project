@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 <body>
-    <form method="POST" action="">
+    <form method="POST" action="" class="mid">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit">

@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<span class="buttons">
 <ul>
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="{% url 'addFaculty' %}">Add Faculty</a></li>
-    <li><a href="{% url 'addRoom' %}">Add Room </a></li>
-    <li><a href="{% url 'addMeetingTime' %}">Add Meeting time</a></li>
-    <li><a href="{% url 'addCourse' %}">Add Course</a></li>
-    <li><a href="{% url 'addDepartment' %}">Add department</a></li>
-    <li><a href="{% url 'addSection' %}">Add Section</a></li>
+    <li><a href="{% url 'home' %}"><p>Home</p></a></li>
+    <li><a href="{% url 'addFaculty' %}"><p>Add Faculty</p></a></li>
+    <li><a href="{% url 'addRoom' %}"><p>Add Room </p></a></li>
+    <li><a href="{% url 'addMeetingTime' %}"><p>Add Meeting time</p></a></li>
+    <li><a href="{% url 'addCourse' %}"><p>Add Course</p></a></li>
+    <li><a href="{% url 'addDepartment' %}"><p>Add department</p></a></li>
+    <li><a href="{% url 'addSection' %}"><p>Add Section</p></a></li>
   </ul>
+</span>
 {% for section in sections %}
 <h2>{{ section.section_id }} ({{ section.department }})</h2>
     <table>

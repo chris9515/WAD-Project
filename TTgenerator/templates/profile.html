@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
 </head>
 <body>
+    <div class="buttons">
     <h1>User Name: {{profile.user.username}}</h1>
     <h2>First Name: {{profile.user.first_name}}</h2>
     <h2>Last Name: {{profile.user.last_name}}</h2>
@@ -15,5 +16,6 @@
             <h2>Admission Date: {{profile.year}}</h2>
         {% endif %} -->
     <h2>Email: {{ profile.user.email }}</h2>
+</div>
 </body>
 {% endblock %}

@@ -78,9 +78,48 @@
 .signup_div a{
   color: #423F40;
 }
+.mid{
+  margin: 7% 35%;
+  paddinG:3%;
+  background-color:darkcyan;
+}
+.mid ul{
+  color: rgb(199, 198, 194);
+  list-style-type:none;
+  padding-left: 0%;
+}
+.mid p{
+  color: cornsilk;
+  letter-spacing: 1px;
+}
+.mid h1{
+  color: #FFFFE0;
+  font-weight: bold;
+  font-size: 26px;
+}
 .buttons{
   margin: 10% 40%;
 }
+.buttons ul{
+  background:darkslategray;
+  padding: 20px;
+  margin-top: 3%;
+  margin-left: 5%;
+  width:18%;
+  padding-left: 2%;
+  border-radius: 30px;
+}
+.buttons ul li{
+    color: cornsilk;
+    margin: 8px;
+    padding-left: 2%;
+    list-style-type: circle;
+
+  }
+  .buttons p{
+    font-size: 17px;
+    font-weight: lighter;
+  }
 .logoutbtn{
   text-align: center;
   border-radius: 8px;
@@ -798,7 +837,7 @@ h1{
 }
 
 p{
-  color: rgb(211, 166, 166);
+  color: whitesmoke;
 }
 
 .login{
