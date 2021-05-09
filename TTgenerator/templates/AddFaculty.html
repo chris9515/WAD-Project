@@ -2,10 +2,12 @@
 {% block content %}
 {% load static %}
 <body>
+    <a href="{% url 'teacherTimetable' %}">Back</a>
     <form method="POST" action="" class="mid">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit">
+        <a href="{% url 'editInstructors' %}">Edit Faculty</a>
     </form>
 </body>
 {% endblock %}

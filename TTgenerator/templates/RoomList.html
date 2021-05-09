@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<a href="{% url 'teacherTimetable' %}">Back</a>
+<br>
+<a href="{% url 'addRoom' %}">Add Room</a>
 <table>
     <tr>
         <th>Room No.</th>
