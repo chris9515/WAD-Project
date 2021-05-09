@@ -15,7 +15,7 @@
                 <td>{{i.department}}</td>
                 <td>{{i.noClassesInWeek}}</td>
                 <td>
-                    <form action="{% url 'deleteSection' i.secionID %}">
+                    <form action="{% url 'deleteSection' i.sectionID %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" value="X">
                     </form>

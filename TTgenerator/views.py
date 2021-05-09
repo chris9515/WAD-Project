@@ -378,7 +378,7 @@ def context_manager(schedule):
                         f'{classes[i].course.maxStudents}'
         cls['room'] = f'{classes[i].room.roomNo} ({classes[i].room.capacity})'
         cls['instructor'] = f'{classes[i].instructor.name} ({classes[i].instructor.instructorID})'
-        cls['meeting_time'] = [classes[i].meetingTime.pid, classes[i].meetingTime.day, classes[i].meetingTime.time]
+        cls['meetingTime'] = [classes[i].meetingTime.pid, classes[i].meetingTime.day, classes[i].meetingTime.time]
         context.append(cls)
     return context
 
@@ -508,7 +508,7 @@ def addSection(request):
         if form.is_valid():
             form.save()
             return redirect('addSection')
-    return render(request, 'AddSection.html', {'form':form})
+    return render(request, 'AddSection.html', {'form': form})
 
 def sectionList(request):
     context = {
