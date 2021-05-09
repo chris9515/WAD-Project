@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<form action="" method="POST">
+<form action="" method="POST" class="mid">
     {% csrf_token %}
     <h1>Add Course</h1>
     <a href="{% url 'editCourse' %}">Edit Course</a>

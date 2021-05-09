@@ -9,10 +9,10 @@
         </title>
     </head>
     <body>
-        <form method="POST">
+        <form method="POST" class="buttons">
             {% csrf_token %}
-            Text: {{ edit.text }}
-            Completed: {{ edit.completed }}
+            <p><big>Text: </big>{{ edit.text }} </p>
+            <p><big>Completed: </big> {{ edit.completed }} </p>
             <button type="submit">Update</button>
         </form>
     </body>
