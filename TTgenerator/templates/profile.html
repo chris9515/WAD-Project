@@ -6,16 +6,16 @@
     <link rel="stylesheet" href="{% static 'css/Wad_Project.css' %}">
 </head>
 <body>
-    <div class="buttons">
-    <h1>User Name: {{profile.user.username}}</h1>
-    <h2>First Name: {{profile.user.first_name}}</h2>
-    <h2>Last Name: {{profile.user.last_name}}</h2>
+    <div class="prof">
+    <p>User Name: {{profile.user.username}}</p>
+    <p>First Name: {{profile.user.first_name}}</p>
+    <p>Last Name: {{profile.user.last_name}}</p>
     {% if profile.user.is_staff == True  %}
-        <h2>Subject: {{ profile.subject }}</h2>
+        <p>Subject: {{ profile.subject }}</p>
     {% else %}
-        <h2>Admission Date: {{profile.year}}</h2>
+        <p>Admission Date: {{profile.year}}</p>
     {% endif %}
-    <h2>Email: {{ profile.user.email }}</h2>
+    <p>Email: {{ profile.user.email }}</p>
 </div>
 </body>
 {% endblock %}

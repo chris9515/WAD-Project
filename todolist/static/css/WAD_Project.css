@@ -100,25 +100,35 @@
 .buttons{
   margin: 10% 40%;
 }
+.prof{
+  margin: 9% 36%;
+  background-color:indianred;
+  padding: 20px 5px;
+  border-radius: 20px;
+}
+.prof p{
+  font-size: 20px;
+  font-style: italic;
+  padding-left: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 .buttons ul{
-  background:darkslategray;
+  background-color:darkseagreen;
   padding: 20px;
-  margin-top: 3%;
-  margin-left: 5%;
-  width:18%;
   padding-left: 2%;
   border-radius: 30px;
+  margin: 2% 38%;
 }
 .buttons ul li{
-    color: cornsilk;
+    color: whitesmoke;
     margin: 8px;
     padding-left: 2%;
     list-style-type: circle;
-
   }
   .buttons p{
     font-size: 17px;
-    font-weight: lighter;
+    color: whitesmoke;
   }
 .logoutbtn{
   text-align: center;
@@ -164,7 +174,6 @@
   text-align: start;
   outline: none;
 }
-
 .submit_btn{
   width: 50%;
   height: 100%;
