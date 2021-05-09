@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<a href="{% url 'teacherTimetable' %}">Back</a>
 <br>
-<a href="{% url 'addRoom' %}">Add Room</a>
+<div class="back">
+<a href="{% url 'teacherTimetable' %}">Back</a></div>
+<br>
+<div class="back">
+<a href="{% url 'addRoom' %}">Add Room</a></div>
 <table>
     <tr>
-        <th>Room No.</th>
-        <th>Seating Capacity</th>
-        <th></th>
+        <td>Room No.</td>
+        <td>Seating Capacity</td>
+        <td></td>
     </tr>
-    <tbody>
         {% for i in rooms %}
             <tr>
                 <td>{{i.roomNo}}</td>
@@ -23,6 +25,5 @@
                 </td>
             </tr>
         {% endfor %}
-    </tbody>
 </table>
 {% endblock %}

@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<a href="{% url 'teacherTimetable' %}">Back</a>
 <br>
-<a href="{% url 'addFaculty' %}">Add Faculty</a>
+<div class="back">
+<a href="{% url 'teacherTimetable' %}">Back</a></div>
+<br>
+<div class="back">
+<a href="{% url 'addFaculty' %}">Add Faculty</a></div>
 <table>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th></th>
+        <td>ID</td>
+        <td>Name</td>
+        <td></td>
     </tr>
-    <tbody>
         {% for i in instructors %}
             <tr>
                 <td>{{i.instructorID}}</td>
@@ -23,6 +25,5 @@
                 </td>
             </tr>
         {% endfor %}
-    </tbody>
 </table>
 {% endblock %}

@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<a href="{% url 'teacherTimetable' %}">Back</a>
+<br>
+<div class="back">
+<a href="{% url 'teacherTimetable' %}">Back</a></div>
 <form action="" method="POST" class="mid">
     {% csrf_token %}
     <h1>Add Department</h1>
     {{form.as_p}}
-    <input type="submit" value="Submit">
-    <br><br>
-    <a href="{% url 'editDepartment' %}">Edit Department</a>
+    <center><input type="submit" value="Submit"></center>
+    <br>
+    <div class="back">
+    <a href="{% url 'editDepartment' %}">Edit Department</a></div>
 </form>
 {% endblock %}
