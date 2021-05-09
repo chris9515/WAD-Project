@@ -382,7 +382,8 @@ def context_manager(schedule):
         context.append(cls)
     return context
 
-def timetable(request):
+def teacherTimetable(request):
+    profile = Teacher.objects.get(user=request.user)
     schedule = []
     population = Population(POPULATION_SIZE)
     generation_num = 0
@@ -395,7 +396,26 @@ def timetable(request):
         population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
         schedule = population.get_schedules()[0].get_classes()
     return render(request, 'timetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
-                                              'times': MeetingTime.objects.all()})
+                                              'times': MeetingTime.objects.all(), 'profile': profile,})
+    # return render(request, 'timetable.html', {'profile':profile})
+
+def studentTimetable(request):
+    profile = Student.objects.get(user=request.user)
+    schedule = []
+    population = Population(POPULATION_SIZE)
+    generation_num = 0
+    population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
+    geneticAlgorithm = GeneticAlgorithm()
+    while population.get_schedules()[0].get_fitness() != 1.0:
+        generation_num += 1
+        print('\n> Generation #' + str(generation_num))
+        population = geneticAlgorithm.evolve(population)
+        population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
+        schedule = population.get_schedules()[0].get_classes()
+    return render(request, 'timetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
+                                              'times': MeetingTime.objects.all(), 'profile': profile,})
+    # return render(request, 'timetable.html', {'profile':profile})
+
 
 def AddFaculty(request):
     form = InstructorForm(request.POST)

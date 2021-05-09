@@ -17,11 +17,11 @@
 {% endif %}
 {% if user.is_staff %}
 <div class="schbtn">
-    <a href="{% url 'timetable' %}">Schedule</a>
+    <a href="{% url 'teacherTimetable' %}">Schedule</a>
 </div>
 {% elif not user.is_staff %}
 <div class="schbtn">
-    <a href="{% url 'timetableStudent' %}">Schedule</a>
+    <a href="{% url 'studentTimetable' %}">Schedule</a>
 </div>
 {% endif %}
 <div class="logoutbtn">

@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% if profile.user.is_staff %}
 <span class="buttons">
-<ul>
-    <li><a href="{% url 'home' %}"><p>Home</p></a></li>
-    <li><a href="{% url 'addFaculty' %}"><p>Add Faculty</p></a></li>
-    <li><a href="{% url 'addRoom' %}"><p>Add Room </p></a></li>
-    <li><a href="{% url 'addMeetingTime' %}"><p>Add Meeting time</p></a></li>
-    <li><a href="{% url 'addCourse' %}"><p>Add Course</p></a></li>
-    <li><a href="{% url 'addDepartment' %}"><p>Add department</p></a></li>
-    <li><a href="{% url 'addSection' %}"><p>Add Section</p></a></li>
+  <ul>
+      <li><a href="{% url 'home' %}"><p>Home</p></a></li>
+      <li><a href="{% url 'addFaculty' %}"><p>Add Faculty</p></a></li>
+      <li><a href="{% url 'addRoom' %}"><p>Add Room </p></a></li>
+      <li><a href="{% url 'addMeetingTime' %}"><p>Add Meeting time</p></a></li>
+      <li><a href="{% url 'addCourse' %}"><p>Add Course</p></a></li>
+      <li><a href="{% url 'addDepartment' %}"><p>Add department</p></a></li>
+      <li><a href="{% url 'addSection' %}"><p>Add Section</p></a></li>
   </ul>
 </span>
-{% for section in sections %}
+{% endif %}
+<!-- {% for section in sections %}
   <h2>{{ section.sectionID }} ({{ section.department }})</h2>
       <table>
         <tr>
@@ -37,5 +39,5 @@
         </tbody>
       </table>
 
-{% endfor %}
+{% endfor %} -->
 {% endblock %}
