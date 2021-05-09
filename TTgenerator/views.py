@@ -430,7 +430,8 @@ def instructorView(request):
     context = {
         'instructors': Instructor.objects.all()
     }
-    return render(request, 'InstituteList.html', context)
+    print(Instructor.objects.all())
+    return render(request, 'FacultyList.html', context)
 
 def deleteInstructor(request, pk):
     temp = Instructor.objects.filter(pk=pk)
