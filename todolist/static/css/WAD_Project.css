@@ -43,11 +43,11 @@
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  align-items: center;  
+  align-items: center; 
 }
 .std_signin p{
   color: cornsilk;
-  font-style: none;
+  font-style: normal;
 }
 .signin_box_div{
   margin: 10px 0px;
