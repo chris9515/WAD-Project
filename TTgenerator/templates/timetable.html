@@ -13,35 +13,29 @@
   </ul>
 </span>
 {% for section in sections %}
-<h2>{{ section.sectionID }} ({{ section.department }})</h2>
-    <table>
-      <!-- <colgroup>
-        <col >
-        <col >
-        <col>
-        <col>
-        <col >
-        <col>
-      </colgroup> -->
-      <tr>
-        <th>Class #</th>
-        <th>Course</th>
-        <th>Venue(Block- Room)</th>
-        <th>Instructor</th>
-        <th>Class Timing</th>
-      </tr>
-      {% for class in schedule %}
-        {% if class.section == section.sectionID %}
+  <h2>{{ section.sectionID }} ({{ section.department }})</h2>
+      <table>
         <tr>
-          <th>{{class.sectionID}}</th>
-          <td>{{class.course}}</td>
-          <td>{{class.room}}</td>
-          <td>{{class.instructor}}</td>
-          <td>{{class.meetingTime}}</td>
+          <th>Class #</th>
+          <th>Course</th>
+          <th>Room</th>
+          <th>Instructor</th>
+          <th>Class Timing</th>
         </tr>
-        {% endif %}
-      {% endfor %}
-    </table>
+        <tbody>
+          {% for class in schedule %}
+            {% if class.section == section.sectionID %}
+            <tr>
+              <th>{{class.sectionID}}</th>
+              <td>{{class.course}}</td>
+              <td>{{class.room}}</td>
+              <td>{{class.instructor}}</td>
+              <td>{{class.meetingTime}}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+      </table>
 
 {% endfor %}
 {% endblock %}

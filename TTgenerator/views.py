@@ -394,7 +394,6 @@ def timetable(request):
         population = geneticAlgorithm.evolve(population)
         population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
         schedule = population.get_schedules()[0].get_classes()
-
     return render(request, 'timetable.html', {'schedule': schedule, 'sections': Section.objects.all(),
                                               'times': MeetingTime.objects.all()})
 
@@ -404,6 +403,7 @@ def AddFaculty(request):
         if form.is_valid():
             form.save()
             return redirect('addFaculty')
+    print(Instructor.objects.all())
     return render(request, 'AddFaculty.html', {'form':form})
 
 def instructorView(request):
