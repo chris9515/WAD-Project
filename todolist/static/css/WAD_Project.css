@@ -101,35 +101,47 @@
   margin: 10% 40%;
 }
 .prof{
-  margin: 9% 36%;
-  background-color:indianred;
+  margin: 7% 36%;
+  background-color:teal;
   padding: 20px 5px;
   border-radius: 20px;
 }
 .prof p{
-  font-size: 20px;
+  font-size: 19px;
   font-style: italic;
   padding-left: 22px;
   font-weight: bold;
   letter-spacing: 1px;
+  color: rgb(240, 197, 186);
 }
-.buttons ul{
+.lists{
+  margin: 3% 39%;
+  padding-left: 2%;
+}
+.lists ul{
   background-color:darkseagreen;
   padding: 20px;
-  padding-left: 2%;
   border-radius: 30px;
-  margin: 2% 38%;
+  padding-left: 15%;
 }
-.buttons ul li{
+.lists ul li{
     color: whitesmoke;
     margin: 8px;
     padding-left: 2%;
     list-style-type: circle;
   }
-  .buttons p{
+  .lists p{
     font-size: 17px;
     color: whitesmoke;
   }
+ .back a{
+   text-decoration: none;
+   color:ivory;
+   margin-left: 2%;
+   background-color:cornflowerblue;
+   padding: 5px 8px;
+   border-radius: 5px;
+ }
 .logoutbtn{
   text-align: center;
   border-radius: 8px;
