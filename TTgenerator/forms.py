@@ -13,19 +13,21 @@ from django.forms import ModelForm
 #         model = User
 #         fields = ('first_name','last_name','username', 'email','is_staff','password1', 'password2')
 
-class StudentForm(UserCreationForm):
+#Forms for various models created, the fields displayed here are the fields going to be displayed in the website
+
+class StudentForm(UserCreationForm): #student form
     year = forms.DateField()
     class Meta:
         model = User
         fields = ['first_name','last_name','username','email','password1','password2',]
 
-class CustomUserCreationForm(UserCreationForm):
+class CustomUserCreationForm(UserCreationForm): #form for user model
     # subject = forms.CharField(max_length=20)
     class Meta:
         model = User
         fields = ['first_name','last_name','username', 'email','password1', 'password2',]
 
-class CustomAuthenticateForm(AuthenticationForm):
+class CustomAuthenticateForm(AuthenticationForm): #form used  for authenticating into a user profile
     class Meta:
         model = User
         fields = ['username', 'password']
@@ -35,7 +37,7 @@ class CustomAuthenticateForm(AuthenticationForm):
         self.fields['username'].widget = forms.TextInput(attrs={'placeholder' : 'username'})
         self.fields['password'].widget = forms.TextInput(attrs={'placeholder' : 'password', 'type' : 'password'})
 
-class RoomForm(ModelForm):
+class RoomForm(ModelForm): #form for room 
     class Meta:
         model = Room
         fields = [
@@ -44,7 +46,7 @@ class RoomForm(ModelForm):
         ]
 
 
-class InstructorForm(ModelForm):
+class InstructorForm(ModelForm): #form for faculty/instructor
     class Meta:
         model = Instructor
         fields = [
@@ -53,7 +55,7 @@ class InstructorForm(ModelForm):
         ]
 
 
-class MeetingTimeForm(ModelForm):
+class MeetingTimeForm(ModelForm): #form for meeting times
     class Meta:
         model = MeetingTime
         fields = [
@@ -68,19 +70,19 @@ class MeetingTimeForm(ModelForm):
         }
 
 
-class CourseForm(ModelForm):
+class CourseForm(ModelForm): #form for course 
     class Meta:
         model = Course
         fields = ['courseID', 'courseName', 'maxStudents', 'instructors']
 
 
-class DepartmentForm(ModelForm):
+class DepartmentForm(ModelForm): #form for department
     class Meta:
         model = Department
         fields = ['deptName', 'courses']
 
 
-class SectionForm(ModelForm):
+class SectionForm(ModelForm): #form for section
     class Meta:
         model = Section
         fields = ['sectionID', 'department', 'noClassesInWeek']

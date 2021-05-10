@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # class UserProfile(models.Model):
 #     is_student = models.BooleanField(default=True)
 
-class Student(models.Model):
+class Student(models.Model): #Student user model
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student')
     # name = models.CharField(max_length=20)
     year = models.DateField(auto_now_add=True)
@@ -13,7 +13,7 @@ class Student(models.Model):
     def __str__(self):
         return self.user.username
     
-class Teacher(models.Model):
+class Teacher(models.Model): #faculty user model
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='teacher')
     # name = models.CharField(max_length=20)
     # email = models.EmailField()
@@ -50,13 +50,15 @@ NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
 MUTATION_RATE = 0.1
 
-class Instructor(models.Model):
+#different models used in institutional purpose
+
+class Instructor(models.Model): #faculty model
     instructorID = models.CharField(max_length=10)
     name = models.CharField(max_length=30)
     def __str__(self):
         return f'{self.instructorID} {self.name}'
 
-class Course(models.Model):
+class Course(models.Model): #course model
     courseID = models.CharField(max_length=10, primary_key=True)
     courseName = models.CharField(max_length=30)
     maxStudents = models.CharField(max_length=100)
@@ -64,13 +66,13 @@ class Course(models.Model):
     def __str__(self):
         return f'{self.courseID} {self.courseName}'
 
-class Room(models.Model):
+class Room(models.Model): #room model
     roomNo = models.CharField(max_length=10)
     capacity = models.IntegerField(default=0)
     def __str__(self):
         return self.roomNo
 
-class Department(models.Model):
+class Department(models.Model): #department model
     deptName = models.CharField(max_length=50)
     courses = models.ManyToManyField(Course)
 
@@ -81,7 +83,7 @@ class Department(models.Model):
     def __str__(self):
         return self.deptName
 
-class MeetingTime(models.Model):
+class MeetingTime(models.Model): #meeting time model
     pid = models.CharField(max_length=4, primary_key=True)
     time = models.CharField(max_length=50, choices=time_slots, default='11:30 - 12:30')
     day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
@@ -89,7 +91,7 @@ class MeetingTime(models.Model):
     def __str__(self):
         return f'{self.pid} {self.day} {self.time}'
 
-class Section(models.Model):
+class Section(models.Model): #section model
     sectionID = models.CharField(max_length=25, primary_key=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     noClassesInWeek = models.IntegerField(default=0)

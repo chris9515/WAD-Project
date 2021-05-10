@@ -3,7 +3,7 @@ from .models import Teacher, Student
 import random, json
 
 
-def processFacultyRegistrarionForm(form):
+def processFacultyRegistrarionForm(form): #used for registering faculty
     first_name = form.get("first_name")
     last_name = form.get("last_name")
     username = form.get("username")
@@ -23,7 +23,7 @@ def processFacultyRegistrarionForm(form):
     return teacher
 
 
-def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData):
+def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData): #additional algorithm for generating timetable
     
     start = startTime
     end = endTime
@@ -107,7 +107,7 @@ def schedulingalgo(startTime, endTime, breakTime, breakDuration, subjectData):
     else:
         return TimeTable,list5
 
-# def TimeTableGenerator(input,*args,**kwargs):
+# def TimeTableGenerator(input,*args,**kwargs): 
 #     week=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 #     weeks = list(week)
 #     Period = {}

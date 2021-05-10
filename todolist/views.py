@@ -11,10 +11,12 @@ from django.http import HttpResponseRedirect
 #     template_name = 'dailyPlanner.html'
 #     def get_queryset(self):
 #         return ToDoList.objects.all()
-def GetHome(request):
+
+
+def GetHome(request): #view that redirects to the home page
     return render(request, 'home.html')
 
-def DailyPlanner(request):
+def DailyPlanner(request): #view that helps in running daily planner 
     form = TodoForm()
     if request.method == "POST":
         form = TodoForm(request.POST)
@@ -24,7 +26,7 @@ def DailyPlanner(request):
     lists = ToDoList.objects.all()
     return render(request, 'dailyPlanner.html', {"text": form, "list":lists})
 
-def update_task(request, pk):
+def update_task(request, pk): #updating the task in dail planner
     task = ToDoList.objects.get(id=pk)
     form = TodoForm(instance=task)
     if request.method == "POST":
@@ -34,12 +36,12 @@ def update_task(request, pk):
             return redirect("todolist")
     return render(request, "updateList.html", {"edit": form})
 
-def delete_task(request, pk):
+def delete_task(request, pk): #deleting a note in daily planner
     task = ToDoList.objects.get(id=pk)
     task.delete()
     return redirect("todolist")
 
-def delete_all(request):
+def delete_all(request): #view that erases the notes we created in daily planner
     task = ToDoList.objects.all()
     task.delete()
     return redirect("todolist")

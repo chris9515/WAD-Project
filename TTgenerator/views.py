@@ -11,17 +11,17 @@ import random as rand
 
 
 # Create your views here.
-def TimeTableGenerator(request):
+def TimeTableGenerator(request): #view for the page showing personnal and institute logins
     # context = {"user":request.user}
     return render(request, "TTGen.html",)
 
-def InstituteUse(request):
+def InstituteUse(request): #institute use
     return render(request, 'InstituteUse.html')
 
-def PersonnalUse(request):
+def PersonnalUse(request): #personnal use
     return render(request, 'PersonnalUse.html')
 
-def FacultyRegister(request):
+def FacultyRegister(request): #view for faculty singup
     profile = CustomUserCreationForm(initial={'is_staff':True})
     if request.method == 'POST':
         profile = CustomUserCreationForm(request.POST)
@@ -35,7 +35,7 @@ def FacultyRegister(request):
             return redirect('facultyLogin')
     return render(request, 'FacultyRegister.html', {"form":profile, 'type':'Faculty'})
 
-def StudentRegister(request):
+def StudentRegister(request): #view for student signup
     profile = CustomUserCreationForm(initial={'is_staff':False})
     if request.method == 'POST':
         profile = CustomUserCreationForm(request.POST)
@@ -49,7 +49,7 @@ def StudentRegister(request):
             return redirect('studentLogin')
     return render(request, 'StudentRegister.html', {"form":profile, 'type':'Student'})
 
-def FacultyLogin(request):
+def FacultyLogin(request): #view for faculty login
     form = CustomAuthenticateForm()
     if request.method == 'POST':
         form = CustomAuthenticateForm(request.POST)
@@ -65,7 +65,7 @@ def FacultyLogin(request):
             return render(request, 'FacultyLogin.html', {'form': form, 'type':'faculty'})
     return render(request, 'FacultyLogin.html', {'form': form,'type':'faculty'})
 
-def StudentLogin(request):
+def StudentLogin(request): #view for student login
     form = CustomAuthenticateForm()
     if request.method == 'POST':
         form = CustomAuthenticateForm(request.POST)
@@ -81,22 +81,22 @@ def StudentLogin(request):
             return render(request, 'StudentLogin.html', {'form': form, 'type':'student'})
     return render(request, 'StudentLogin.html', {'form': form,'type':'student'})
 
-def teacherProfileView(request):
+def teacherProfileView(request): #view for viewing teacher profile
     # user = User.objects.get(username=username)
     profile = Teacher.objects.get(user=request.user)
     return render(request, 'profile.html', {"profile":profile,})
 
-def studentProfileView(request):
+def studentProfileView(request): #view for viewing student profile
     print(request.user)
     profile = Student.objects.get(user=request.user)
     return render(request, 'profile.html', {"profile":profile,})
 
-def logoutView(request):
+def logoutView(request): #logout 
     logout(request)
     return redirect('InstituteUse')
 
 
-def create_schedule(request):
+def create_schedule(request): #view that leads to algorithm input
     if request.method == 'POST':    
         data  = request.POST
         # print(data)
@@ -149,7 +149,7 @@ def create_schedule(request):
         return render(request, 'TimeTablePlanner.html')
     return render(request, 'CreateSchedule.html')
 
-def TimeTablePlannerView(request):
+def TimeTablePlannerView(request): #view that leads to time table input options
     context = {"user":request.user}
 
     # if request.method == 'POST':
@@ -176,8 +176,8 @@ POPULATION_SIZE = 9
 NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
 MUTATION_RATE = 0.05
-
-class Data:
+ 
+class Data: #use for obtaining data
     def __init__(self):
         self._rooms = Room.objects.all()
         self._meetingTimes = MeetingTime.objects.all()
@@ -200,7 +200,7 @@ class Data:
     def get_meetingTimes(self): 
         return self._meetingTimes
 
-class Schedule:
+class Schedule: #used for schedueling algorithm according to the given input
     def __init__(self):
         self._data = data
         self._classes = []
@@ -253,7 +253,7 @@ class Schedule:
 
         return self
 
-    def calculate_fitness(self):
+    def calculate_fitness(self): #fitness function
         self._numberOfConflicts = 0
         classes = self.get_classes()
         for i in range(len(classes)):
@@ -269,7 +269,7 @@ class Schedule:
                             self._numberOfConflicts += 1
         return 1 / (1.0 * self._numberOfConflicts + 1)
 
-class Population:
+class Population: #population obtaining
     def __init__(self, size):
         self._size = size
         self._data = data
@@ -279,7 +279,7 @@ class Population:
         return self._schedules
 
 
-class GeneticAlgorithm:
+class GeneticAlgorithm: #algorithm for producing time table
     def evolve(self, population):
         return self._mutate_population(self._crossover_population(population))
 
@@ -326,7 +326,7 @@ class GeneticAlgorithm:
         return tournament_pop
 
 
-class Class:
+class Class: #used for getting required data
     def __init__(self, id, dept, section, course):
         self.sectionID = id
         self.department = dept
@@ -367,7 +367,7 @@ class Class:
 data = Data()
 
 
-def context_manager(schedule):
+def context_manager(schedule): #an function helping in schedueling
     classes = schedule.get_classes()
     context = []
     cls = {}
@@ -382,7 +382,7 @@ def context_manager(schedule):
         context.append(cls)
     return context
 
-def teacherTimetable(request):
+def teacherTimetable(request): #function that gives timtable as output in teacher profile
     profile = Teacher.objects.get(user=request.user)
     schedule = []
     population = Population(POPULATION_SIZE)
@@ -399,7 +399,7 @@ def teacherTimetable(request):
                                               'times': MeetingTime.objects.all(), 'profile': profile,})
     # return render(request, 'timetable.html', {'profile':profile})
 
-def studentTimetable(request):
+def studentTimetable(request): #dunction that gives timetable as output in student profile
     profile = Student.objects.get(user=request.user)
     schedule = []
     population = Population(POPULATION_SIZE)
@@ -417,7 +417,7 @@ def studentTimetable(request):
     # return render(request, 'timetable.html', {'profile':profile})
 
 
-def AddFaculty(request):
+def AddFaculty(request): #adding faculty
     form = InstructorForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -426,20 +426,20 @@ def AddFaculty(request):
     print(Instructor.objects.all())
     return render(request, 'AddFaculty.html', {'form':form})
 
-def instructorView(request):
+def instructorView(request): #faculty list
     context = {
         'instructors': Instructor.objects.all()
     }
     print(Instructor.objects.all())
     return render(request, 'FacultyList.html', context)
 
-def deleteInstructor(request, pk):
+def deleteInstructor(request, pk): #faculty delete
     temp = Instructor.objects.filter(pk=pk)
     if request.method == 'POST':
         temp.delete()
         return redirect('editInstructor')
 
-def addRoom(request):
+def addRoom(request): #adding rooms
     form = RoomForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -447,26 +447,26 @@ def addRoom(request):
             return redirect('addRoom')
     return render(request, 'AddRoom.html', {'form':form})
 
-def roomList(request):
+def roomList(request): #list of rooms
     context={
         'rooms': Room.objects.all()
     }
     return render(request, 'RoomList.html', context)
 
-def deleteRoom(request, pk):
+def deleteRoom(request, pk): #delete room
     temp = Room.objects.filter(pk=pk)
     if request.method == 'POST':
         temp.delete()
         return redirect('editRooms')
 
-def meetingListView(request):
+def meetingListView(request): #list of meeting times
     context={
         'meetingTime':MeetingTime.objects.all()
     }
     print(MeetingTime.objects.all())
     return render(request, 'MeetingList.html', context)
 
-def addMeetingTime(request):
+def addMeetingTime(request): #adding meeting times
     form = MeetingTimeForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -476,20 +476,20 @@ def addMeetingTime(request):
             print('Invalid')
     return render(request, 'addMeeting.html', {'form':form})
 
-def deleteMeetingTime(request, pk):
+def deleteMeetingTime(request, pk): #deleting meeting time
     temp = MeetingTime.objects.filter(pk=pk)
     if request.method == 'POST':
         temp.delete()
         return redirect('editMeetingTime')
 
-def courseListView(request):
+def courseListView(request): #list of courses
     context={
         'courses': Course.objects.all()
     }
     print(Course.objects.all())
     return render(request, 'CourseList.html', context)
 
-def addCourse(request):
+def addCourse(request): #adding a course
     form = CourseForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -499,13 +499,13 @@ def addCourse(request):
         print("Invalid")
     return render(request, 'AddCourse.html', {'form':form})
 
-def deleteCourse(request, pk):
+def deleteCourse(request, pk): #deleting a course
     temp = Course.objects.filter(pk=pk)
     if request.method == 'POST':
         temp.delete()
         return redirect('editCourse')
 
-def addDepartment(request):
+def addDepartment(request): #adding a department
     form = DepartmentForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -513,20 +513,20 @@ def addDepartment(request):
             return redirect('addDepartment')
     return render(request, 'AddDepartment.html', {'form':form})
 
-def departmentList(request):
+def departmentList(request): #list of departments
     context = {
         'departments': Department.objects.all()
     }
     return render(request, 'DepartmentList.html', context)
 
-def deleteDepartment(request, pk):
+def deleteDepartment(request, pk): #deleting departments
     temp = Department.objects.filter(pk=pk)
     if request.method == 'POST':
         temp.delete()
         return redirect('editDepartment')
     
 
-def addSection(request):
+def addSection(request): #adding sections
     form = SectionForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -534,13 +534,13 @@ def addSection(request):
             return redirect('addSection')
     return render(request, 'AddSection.html', {'form': form})
 
-def sectionList(request):
+def sectionList(request): #list of sections
     context = {
         'sections': Section.objects.all()
     }
     return render(request, 'SectionList.html', context)
 
-def deleteSection(request, pk):
+def deleteSection(request, pk): #deleting a section
     temp = Section.objects.filter(pk=pk)
     if request.method == 'POST':
         temp.delete()
